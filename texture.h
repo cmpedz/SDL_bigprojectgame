@@ -10,6 +10,8 @@ public :
        void render(SDL_Rect*clip);
        int gettdx();
        int gettdy();
+       int getwidth();
+       int getheight();
        void settdx(int x);
        void settdy(int y);
        void setheight(int h);
@@ -47,6 +49,7 @@ bool Ltexture::loadtexture(string s){
             success=false;
          }
      }
+     SDL_FreeSurface(loadedimage);
      return success;
 }
 void Ltexture::render(SDL_Rect*clip){
@@ -62,6 +65,12 @@ int Ltexture::gettdx(){
 };
 int Ltexture::gettdy(){
     return y;
+};
+int Ltexture::getwidth(){
+    return width;
+};
+int Ltexture::getheight(){
+    return height;
 };
 void Ltexture::settdx(int td_x){
      x=td_x;
@@ -79,6 +88,21 @@ Ltexture background;
 Ltexture character1;
 Ltexture character2;
 Ltexture skill1_of_AI;
+Ltexture skill1_of_character1;
+Ltexture effect_for_skill1_of_character1;
+//
+Ltexture character1_face;
+Ltexture health_bar_1_for_character1;
+Ltexture health_bar_2_for_character1;
+//
+Ltexture character2_face;
+Ltexture health_bar_1_for_character2;
+Ltexture health_bar_2_for_character2;
+//
+Ltexture game_over_class;
+//
+Ltexture character2_skill2;
+int tdx_of_skill2_character2=character2.gettdx();
 int skill_attack_directly_of_AI_frame=0;
 const int quatity_of_frame_skill1_AI=7;
 SDL_Rect skill1_of_AI_clip[ quatity_of_frame_skill1_AI];

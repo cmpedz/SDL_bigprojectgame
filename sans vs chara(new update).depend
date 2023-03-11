@@ -444,3 +444,64 @@
 
 1677741227 c:\users\admin\downloads\sans vs chara(new update)\character2.h
 
+1678371463 source:c:\users\admin\downloads\sans vs chara(new update) 1.0\main.cpp
+	<iostream>
+	<math.h>
+	<SDL.h>
+	"gravity.h"
+	"common function.h"
+	"loadmedia.h"
+	"texture.h"
+	"background.h"
+	"character.h"
+	"character2.h"
+	"character2_skill2.h"
+	"moving_right.h"
+	"moving_left.h"
+	"health_bar.h"
+	"skill1_of_character1.h"
+	"skill2_of_character1.h"
+	"skill3_of_character1.h"
+	"game_over.h"
+	"winner.h"
+	"event loop.h"
+
+1678421240 c:\users\admin\downloads\sans vs chara(new update) 1.0\common function.h
+	<iostream>
+
+1677411063 c:\users\admin\downloads\sans vs chara(new update) 1.0\loadmedia.h
+
+1678373304 c:\users\admin\downloads\sans vs chara(new update) 1.0\texture.h
+
+1678245536 c:\users\admin\downloads\sans vs chara(new update) 1.0\background.h
+
+1678346126 c:\users\admin\downloads\sans vs chara(new update) 1.0\character.h
+
+1677920974 c:\users\admin\downloads\sans vs chara(new update) 1.0\character2.h
+
+1677678441 c:\users\admin\downloads\sans vs chara(new update) 1.0\moving_right.h
+
+1677678448 c:\users\admin\downloads\sans vs chara(new update) 1.0\moving_left.h
+
+1678421240 c:\users\admin\downloads\sans vs chara(new update) 1.0\event loop.h
+
+1678208542 c:\users\admin\downloads\sans vs chara(new update) 1.0\health_bar.h
+
+1677932585 c:\users\admin\downloads\sans vs chara(new update) 1.0\game_over.h
+
+1678373304 c:\users\admin\downloads\sans vs chara(new update) 1.0\character2_skill2.h
+
+1678170290 c:\users\admin\downloads\sans vs chara(new update) 1.0\skill1_of_character1.h
+
+1678421240 c:\users\admin\downloads\sans vs chara(new update) 1.0\skill2_of_character1.h
+
+1678172563 c:\users\admin\downloads\sans vs chara(new update) 1.0\winner.h
+
+1678206592 c:\users\admin\downloads\sans vs chara(new update) 1.0\skill3_of_character1.h
+
+1678373648 source:c:\users\admin\downloads\sans vs chara(new update) 1.0\gravity.cpp
+	"gravity.h"
+	<SDL.h>
+
+1678371490 c:\users\admin\downloads\sans vs chara(new update) 1.0\gravity.h
+

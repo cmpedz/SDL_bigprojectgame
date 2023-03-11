@@ -1,47 +1,31 @@
 #include <iostream>
+#include<math.h>
 using namespace std;
 #include<SDL.h>
+#include"gravity.h"
 #include"common function.h"
 #include"loadmedia.h"
 #include"texture.h"
 #include"background.h"
 #include"character.h"
 #include"character2.h"
+#include"character2_skill2.h"
 #include"moving_right.h"
 #include"moving_left.h"
+#include"health_bar.h"
+#include"skill1_of_character1.h"
+#include"skill2_of_character1.h"
+#include"skill3_of_character1.h"
+#include"game_over.h"
+#include"winner.h"
 #include"event loop.h"
+#define RIGHT 1
+#define LEFT 2
 int main(int arcg,char*argv[])
 {
-  eventloop();
-  /*if(!init()){
-     cout<<"failed to load SDL"<<endl;
-  }
-  else{
-      if(!loadedmedia(true)){
-         cout<<"failed to load media"<<endl;
-      }
-  else{
-   bool quit=false;
-   SDL_Event e;
-   while(!quit){
-           while(SDL_PollEvent(&e)!=0){
-                if(e.type==SDL_QUIT){
-                  quit=true;
-                }
-           }
 
-                SDL_RenderClear(renderer);
-                AI_skill1();
-                if(skill_attack_directly_of_AI_frame/5>=7){
-                  skill_attack_directly_of_AI_frame=7;
-                }
-                skill1_of_AI.render(&skill1_of_AI_clip[skill_attack_directly_of_AI_frame/5]);
-                skill_attack_directly_of_AI_frame++;
-                cout<<skill_attack_directly_of_AI_frame<<endl;
-                SDL_RenderPresent(renderer);
-                SDL_Delay(1000);
-   }
-  }
-  }*/
+  eventloop();
+  close();
+
   return 0;
 }

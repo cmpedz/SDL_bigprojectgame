@@ -39,13 +39,22 @@
 		<Unit filename="background.h" />
 		<Unit filename="character.h" />
 		<Unit filename="character2.h" />
+		<Unit filename="character2_skill2.h" />
 		<Unit filename="common function.h" />
 		<Unit filename="event loop.h" />
+		<Unit filename="game_over.h" />
+		<Unit filename="gravity.cpp" />
+		<Unit filename="gravity.h" />
+		<Unit filename="health_bar.h" />
 		<Unit filename="loadmedia.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="moving_left.h" />
 		<Unit filename="moving_right.h" />
+		<Unit filename="skill1_of_character1.h" />
+		<Unit filename="skill2_of_character1.h" />
+		<Unit filename="skill3_of_character1.h" />
 		<Unit filename="texture.h" />
+		<Unit filename="winner.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
