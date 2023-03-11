@@ -4,6 +4,7 @@
 + set giao diện game over và win
 + set thêm skill 1,2,3 cho player và skill2 cho AI
 + chỉnh sửa cách di chuyển cho player để bớt bị giật
+
 - mục tiêu tiếp theo :
 + set trọng lực cho AI và set nha AI tự biết né đòn
 + set skill3 cho AI
