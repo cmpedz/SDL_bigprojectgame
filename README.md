@@ -1,4 +1,11 @@
-# do là lúc đầu em tải code lên bị nhầm cách nên là các bản ban đầu của code sẽ là từ SDL-game p1 đến p3 và mục tiêu từng đoạn code đã được em ghi trong readme
-ở phần này em đã thêm các tính năng mới cho game :
-+ tạo đc nhân vật AI, set cho AI di chuyển và tấn công player
-+tạo đc hiệu ứng skill1 cho cho AI
+-ở phần này em đã thêm các tính năng mới cho game :
++ set trọng lực cho player trong game
++ tạo thanh máu và hiệu ứng mất máu
++ set giao diện game over và win
++ set thêm skill 1,2,3 cho player và skill2 cho AI
++ chỉnh sửa cách di chuyển cho player để bớt bị giật
+- mục tiêu tiếp theo :
++ set trọng lực cho AI và set nha AI tự biết né đòn
++ set skill3 cho AI
++ điều chỉnh lại skill của AI và player sao cho đúng tung độ với nhân vật
++ sắp xếp lại thư viện theo cách cơ bản đã học trên lớp
