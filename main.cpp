@@ -10,6 +10,7 @@ using namespace std;
 #include"character.h"
 #include"character2.h"
 #include"character2_skill2.h"
+#include"character2_skill3.h"
 #include"moving_right.h"
 #include"moving_left.h"
 #include"health_bar.h"
@@ -23,9 +24,7 @@ using namespace std;
 #define LEFT 2
 int main(int arcg,char*argv[])
 {
-
   eventloop();
   close();
-
   return 0;
 }

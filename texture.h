@@ -38,14 +38,14 @@ bool Ltexture::loadtexture(string s){
      bool success=true;
      SDL_Surface*loadedimage=SDL_LoadBMP(s.c_str());
      if(loadedimage==NULL){
-        cout<<"failed to load image"<<endl<<"error :"<<SDL_GetError();
+        std::cout<<"failed to load image"<<std::endl<<"error1 :"<<SDL_GetError();
         success=false;
      }
      else{
          SDL_SetColorKey(loadedimage,SDL_TRUE,SDL_MapRGB(loadedimage->format,255,0,0));
          image=SDL_CreateTextureFromSurface(renderer,loadedimage);
          if(image==NULL){
-            cout<<"failed to load image texture"<<endl<<"error :"<<SDL_GetError();
+            std::cout<<"failed to load image texture"<<std::endl<<"error2 :"<<SDL_GetError();
             success=false;
          }
      }
@@ -103,6 +103,7 @@ Ltexture game_over_class;
 //
 Ltexture character2_skill2;
 int tdx_of_skill2_character2=character2.gettdx();
+int tdy_of_skill2_character2=character2.gettdy();
 int skill_attack_directly_of_AI_frame=0;
 const int quatity_of_frame_skill1_AI=7;
 SDL_Rect skill1_of_AI_clip[ quatity_of_frame_skill1_AI];

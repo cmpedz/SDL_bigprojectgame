@@ -34,7 +34,8 @@ void set_skill1_of_character1(int tdx_skill1_of_character1,int tdy_skill1_of_cha
 
 
 }
-void set_skill1_of_character1_active(int &tdx_beam,int &tdx_skill1_of_character1,int tdy_skill1_of_character1,int height_of_beam,int &width_of_beam,int &tdy_beam,int &time_watting_for_skill1_of_character1){
+void set_skill1_of_character1_active(int tdy_character2,int &tdx_beam,int &tdx_skill1_of_character1,int tdy_skill1_of_character1,int &height_of_beam,int &width_of_beam,int &tdy_beam,int &time_watting_for_skill1_of_character1){
+       height_of_beam=height_of_beam-tdy_character2+tdy_of_ground;
        if(does_skill1_of_character1_active){
           time_watting_for_skill1_of_character1=1;
           if(skill1_of_character1_frame/30>=3){
@@ -43,6 +44,8 @@ void set_skill1_of_character1_active(int &tdx_beam,int &tdx_skill1_of_character1
              width_of_beam=0;
              tdx_beam=tdx_skill1_of_character1;
              time_watting_for_skill1_of_character1=0;
+             height_of_beam=height_of_screen/4;
+             chance_to_teleport=1;
           }
           skill1_of_character1.render(&skill1_of_character1_clip[skill1_of_character1_frame/30]);
           if(skill1_of_character1_frame/30>=1){

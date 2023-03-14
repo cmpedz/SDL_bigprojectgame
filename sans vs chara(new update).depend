@@ -505,3 +505,67 @@
 
 1678371490 c:\users\admin\downloads\sans vs chara(new update) 1.0\gravity.h
 
+1678797832 source:c:\users\admin\desktop\bách khoa\sans vs chara\main.cpp
+	<iostream>
+	<math.h>
+	<SDL.h>
+	"gravity.h"
+	"common function.h"
+	"loadmedia.h"
+	"texture.h"
+	"background.h"
+	"character.h"
+	"character2.h"
+	"character2_skill2.h"
+	"character2_skill3.h"
+	"moving_right.h"
+	"moving_left.h"
+	"health_bar.h"
+	"skill1_of_character1.h"
+	"skill2_of_character1.h"
+	"skill3_of_character1.h"
+	"game_over.h"
+	"winner.h"
+	"event loop.h"
+
+1678721438 c:\users\admin\desktop\bách khoa\sans vs chara\gravity.h
+
+1678728729 c:\users\admin\desktop\bách khoa\sans vs chara\common function.h
+	<iostream>
+
+1678721439 c:\users\admin\desktop\bách khoa\sans vs chara\loadmedia.h
+
+1678782070 c:\users\admin\desktop\bách khoa\sans vs chara\texture.h
+
+1678797439 c:\users\admin\desktop\bách khoa\sans vs chara\background.h
+
+1678721434 c:\users\admin\desktop\bách khoa\sans vs chara\character.h
+
+1678721434 c:\users\admin\desktop\bách khoa\sans vs chara\character2.h
+
+1678774726 c:\users\admin\desktop\bách khoa\sans vs chara\character2_skill2.h
+
+1678721440 c:\users\admin\desktop\bách khoa\sans vs chara\moving_right.h
+
+1678721440 c:\users\admin\desktop\bách khoa\sans vs chara\moving_left.h
+
+1678728394 c:\users\admin\desktop\bách khoa\sans vs chara\health_bar.h
+
+1678727584 c:\users\admin\desktop\bách khoa\sans vs chara\skill1_of_character1.h
+
+1678722859 c:\users\admin\desktop\bách khoa\sans vs chara\skill2_of_character1.h
+
+1678721444 c:\users\admin\desktop\bách khoa\sans vs chara\skill3_of_character1.h
+
+1678721435 c:\users\admin\desktop\bách khoa\sans vs chara\game_over.h
+
+1678721445 c:\users\admin\desktop\bách khoa\sans vs chara\winner.h
+
+1678798408 c:\users\admin\desktop\bách khoa\sans vs chara\event loop.h
+
+1678721438 source:c:\users\admin\desktop\bách khoa\sans vs chara\gravity.cpp
+	"gravity.h"
+	<SDL.h>
+
+1678798935 c:\users\admin\desktop\bách khoa\sans vs chara\character2_skill3.h
+

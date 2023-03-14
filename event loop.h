@@ -17,6 +17,7 @@ void eventloop(){
   else{
       SDL_Event e;
       bool quit=false;
+      set_skill3_of_character2();
       set_value_for_ingradient_of_skill2_of_character1();
       while(!quit){
            while(SDL_PollEvent(&e)!=0){
@@ -99,6 +100,12 @@ void eventloop(){
                   tdy_character1=tdy_of_ground;
                   can_character1_jump=false;
                 }
+                for(int i=0;i<quatities_of_bone;i++){
+                    if(!is_ingradient_of_skill2_from_character1_actived[i]){
+                       tdx_for_ingradient_of_skill2_character1[i]=tdx_character1;
+                       tdy_for_ingradient_of_skill2_character1[i]=tdy_character1;
+                    }
+                }
            }
 
 
@@ -122,6 +129,7 @@ void eventloop(){
 
            /*************************************************************************/
            //
+           character_1(tdx_character1,tdy_character1,character1_frame,choose_right_1,choose_left_1);
            set_skill1_of_character1(tdx_skill1_of_character1,tdy_skill1_of_character1,height_of_beam,width_of_beam,tdx_beam,tdy_beam);
            /**************************************************************************/
            //
@@ -148,7 +156,6 @@ void eventloop(){
            }
          }
 
-        character_1(tdx_character1,tdy_character1,character1_frame,choose_right_1,choose_left_1);
          //****************************************//
            if(tdx_character2-tdx_character1<=30 && tdx_character2-tdx_character1>=-30 && tdy_character2 == tdy_character1){
               //
@@ -181,17 +188,39 @@ void eventloop(){
              start_time=SDL_GetTicks();
          }
          /****************************************************************/
+
+
+
         // set skill1 of character 1 appearing and making damage on AI
-        if(does_skill1_of_character1_active){ set_skill1_of_character1_active(tdx_beam,tdx_skill1_of_character1,tdy_skill1_of_character1,height_of_beam,width_of_beam,tdy_beam,time_watting_for_skill1_of_character1);}
+        if(does_skill1_of_character1_active){ set_skill1_of_character1_active(tdy_character2,tdx_beam,tdx_skill1_of_character1,tdy_skill1_of_character1,height_of_beam,width_of_beam,tdy_beam,time_watting_for_skill1_of_character1);}
            if(tdx_character2<=tdx_beam+20 && tdx_character2>=tdx_beam-20 && tdy_character2>=tdy_beam){
               did_character2_get_hit=true;
            }
            else{did_character2_get_hit=false;}
            if(did_character2_get_hit){
-              health_bar_2_of_character2=health_bar_2_of_character2-2;
-              tdx_health_bar_2_of_character2=tdx_health_bar_2_of_character2+2;
+              health_bar_2_of_character2=health_bar_2_of_character2-1;
+              tdx_health_bar_2_of_character2=tdx_health_bar_2_of_character2+1;
+              cout<<"hit 1"<<endl;
               if(health_bar_2_of_character2<0){ health_bar_2_of_character2=0; }
            }
+
+
+       //AI dodges skill1_of_player
+       if(does_skill1_of_character1_active && chance_to_teleport!=0 && !character2_can_not_move){
+             if(tdx_character1-tdx_character2<0){
+                tdx_character2=tdx_character2-50;
+                if(tdx_character2<0){ tdx_character2=0;}
+             }
+
+             if(tdx_character1-tdx_character2>0){
+                tdx_character2=tdx_character2+50;
+                if(tdx_character2>1000){ tdx_character2=1000;}
+            }
+            chance_to_teleport=0;
+        }
+
+
+
         // set skill2 of character 1 appearing and making damage on AI
 
               for(int i=0;i<quatities_of_skill2_for_character1;i++){
@@ -204,19 +233,70 @@ void eventloop(){
                    }
                     if(vector_for_ingradient_of_character1[i]==1){ tdx_for_ingradient_of_skill2_character1[i]=tdx_for_ingradient_of_skill2_character1[i]+10;}
                     if(vector_for_ingradient_of_character1[i]==2){ tdx_for_ingradient_of_skill2_character1[i]=tdx_for_ingradient_of_skill2_character1[i]-10;}
-                  if(tdx_for_ingradient_of_skill2_character1[i]>=tdx_character2-5 && tdx_for_ingradient_of_skill2_character1[i]<=tdx_character2+5){
+
+                   if(tdx_for_ingradient_of_skill2_character1[i]>=tdx_character2-5 &&
+                     tdx_for_ingradient_of_skill2_character1[i]<=tdx_character2+5 &&
+                     tdy_for_ingradient_of_skill2_character1[i]+2>=tdy_character2 &&
+                     tdy_for_ingradient_of_skill2_character1[i]-2<=tdy_character2){
                      did_character2_get_hit=true;
                   }
                   else{
                       did_character2_get_hit=false;
                   }
                    if(did_character2_get_hit){
+                         cout<<"hit 2"<<endl;
                       health_bar_2_of_character2=health_bar_2_of_character2-5;
                       tdx_health_bar_2_of_character2=tdx_health_bar_2_of_character2+5;
                        if(health_bar_2_of_character2<0){ health_bar_2_of_character2=0; }
                    }
 
               }
+
+//**********************set AI jump****************************//
+
+    // AI follow player
+
+    if(tdy_character1<tdy_character2 && tdx_character2-tdx_character1<=30 && tdx_character2-tdx_character1>=-30){
+                        if(chance_to_jump_of_AI==0){
+                            can_character2_jump=true;
+                            set_time_in_the_air_of_character2=SDL_GetTicks();
+                            chance_to_jump_of_AI=100;
+                            cout<<"jump1"<<endl;
+                          }
+    }
+
+
+    // AI dodges skill2
+                for(int i=0;i<quatities_of_bone;i++){
+                  if(is_ingradient_of_skill2_from_character1_actived[i]){
+                    if(abs(tdx_character2<=tdx_for_ingradient_of_skill2_character1[i])<10 ){
+                          if(chance_to_jump_of_AI==0){
+                            can_character2_jump=true;
+                            set_time_in_the_air_of_character2=SDL_GetTicks();
+                            chance_to_jump_of_AI=100;
+                          }
+                    }
+
+                  }
+                }
+
+                if(tdy_character2<tdy_of_ground || can_character2_jump){
+                        tdy_character2=tdy_character2-set_gravity(v_of_character2,set_time_in_the_air_of_character2);
+                        cout<<"miss 2"<<endl;
+                        if(tdy_character2>tdy_of_ground){
+                            tdy_character2=tdy_of_ground;
+                            can_character2_jump=false;
+                         }
+                 }
+
+                if(chance_to_jump_of_AI!=0){
+                   chance_to_jump_of_AI--;
+                }
+
+
+
+//*************************************************************//
+
 
             //set skill 3 for character1 and cause damage on AI
             if(does_skill3_of_character1_active){
@@ -227,7 +307,7 @@ void eventloop(){
                     does_skill3_of_character1_active=false;
                     time_appearing_of_skill3_from_character1=50;
                  }
-                 if(tdx_character2>=skill3_of_character1.gettdx() && skill3_of_character1.gettdx()+150>=tdx_character2){
+                 if(tdx_character2>=skill3_of_character1.gettdx() && skill3_of_character1.gettdx()+150>=tdx_character2 && skill3_of_character1.gettdy()-tdy_character2<=0){
                  did_character2_get_hit=true;
               }
               else{
@@ -236,6 +316,7 @@ void eventloop(){
               if(did_character2_get_hit){
                  health_bar_2_of_character2=health_bar_2_of_character2-1;
                  tdx_health_bar_2_of_character2=tdx_health_bar_2_of_character2+1;
+                  cout<<"hit 3"<<endl;
                  if(health_bar_2_of_character2<0){ health_bar_2_of_character2=0; }
               }
             }
@@ -250,24 +331,32 @@ void eventloop(){
 
           }
           if(is_skill2_of_character2_actived){
-             skill2_active(tdx_of_skill2_character2,tdy_character2,right_AI,left_AI);
+             skill2_active(tdx_of_skill2_character2,tdy_of_skill2_character2,right_AI,left_AI);
              if(left_AI){
                 tdx_of_skill2_character2=tdx_of_skill2_character2-20;
              }
              if(right_AI){tdx_of_skill2_character2=tdx_of_skill2_character2+20;}
+
+
+
              // heal_bar_of_character1_is_damaged_by_skill2_of_AI
             if(tdx_of_skill2_character2>=tdx_character1-10 && tdx_of_skill2_character2<=tdx_character1+10){
              did_character1_get_hit=true;
-             if(did_character1_get_hit && health_bar_2_of_character1 >0 && tdy_character2-5<=tdy_character1 && tdy_character2+5>=tdy_character1){
+             if(did_character1_get_hit && health_bar_2_of_character1 >0 && tdy_of_skill2_character2-5<=tdy_character1 && tdy_of_skill2_character2+5>=tdy_character1){
                  health_bar_2_of_character1=health_bar_2_of_character1-50;
                  health_bar_2_for_character1.settdx(health_bar_1_for_character1.gettdx()-50);
                  did_character1_get_hit=false;
                  time_watting_for_skill2_of_AI=100;
               }
           }
-
-
           }
+
+
+          // set skill3 of Ai active
+          set_skill3_of_character2_active();
+
+
+
           set_health_bar_for_character1(health_bar_2_of_character1);
           set_health_bar_for_character2(health_bar_2_of_character2,tdx_health_bar_2_of_character2);
            //
@@ -280,7 +369,8 @@ void eventloop(){
            }
 
 
-      }
+
+    }
          else{
              if(game_over){
                 game_over_system();
@@ -298,6 +388,7 @@ void eventloop(){
            if(character2_skill2.gettdx()<=0 || character2_skill2.gettdx()>=1080 ){
              is_skill2_of_character2_actived=false;
              tdx_of_skill2_character2=tdx_character2;
+             tdy_of_skill2_character2=tdy_character2;
            }
            // set time watting for skill2 of character1
             if(time_watting_of_skill2_from_character1!=0){
@@ -331,7 +422,9 @@ void eventloop(){
            get_dunked_on.free();
            skill1_of_character1.free();
            skill3_of_character1.free();
+
        }
   }
 }
 }
+

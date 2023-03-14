@@ -3,7 +3,7 @@
 texture
 #endif // texture
 
-       void set_health_bar_for_character1(int health_bar_2_of_character1){
+       void set_health_bar_for_character1(double health_bar_2_of_character1){
          character1_face.loadtexture("sans_face.bmp");
          character1_face.settdx(0);
          character1_face.settdy(0);
@@ -20,7 +20,7 @@ texture
          character1_face.render(NULL);
       }
 
-       void set_health_bar_for_character2(int health_bar_2_of_character2,int tdx_health_bar_2_of_character2){
+       void set_health_bar_for_character2(double health_bar_2_of_character2,double tdx_health_bar_2_of_character2){
          character2_face.loadtexture("chara_face.bmp");
          character2_face.settdx(1080-128);
          character2_face.settdy(0);

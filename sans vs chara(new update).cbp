@@ -40,6 +40,7 @@
 		<Unit filename="character.h" />
 		<Unit filename="character2.h" />
 		<Unit filename="character2_skill2.h" />
+		<Unit filename="character2_skill3.h" />
 		<Unit filename="common function.h" />
 		<Unit filename="event loop.h" />
 		<Unit filename="game_over.h" />

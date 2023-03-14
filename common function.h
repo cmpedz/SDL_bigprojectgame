@@ -26,19 +26,21 @@ const int tdy_of_ground=height_of_screen/4*3;
   bool right_AI=false;
   bool left_AI=false;
   int start_time=0;
-
+  int chance_to_teleport=1;
   int time_appearing_of_skill1_from_AI=0;
 
   bool did_character1_get_hit=false;
   bool did_character2_get_hit=false;
   bool game_over=false;
   bool game_win=false;
-  int health_bar_2_of_character1=400;
-  int health_bar_2_of_character2=400;
-  int tdx_health_bar_2_of_character2=1080-400;
+  double health_bar_2_of_character1=400;
+  double health_bar_2_of_character2=400;
+  double tdx_health_bar_2_of_character2=1080-400;
   //
   int time_watting_for_skill2_of_AI=100;
   bool is_skill2_of_character2_actived=false;
+
+
   //set skill1 for character 1
   int skill1_of_character1_frame=0;
   int time_appearing_of_skill1_from_character1=0;
@@ -50,6 +52,8 @@ const int tdy_of_ground=height_of_screen/4*3;
   int tdx_beam=0;
   int tdy_beam=0;
   int time_watting_for_skill1_of_character1=0;
+
+
   //set skill2 for character1
   int tdx_skill2_of_character1=tdx_character1;
   int tdy_skill2_of_character1=0;
@@ -57,15 +61,25 @@ const int tdy_of_ground=height_of_screen/4*3;
   int quatities_of_skill2_for_character1=0;
   bool left_for_skill2_of_character1=false;
   bool right_for_skill2_of_character1=false;
+
+
   // set skill3 for character 1
   bool does_skill3_of_character1_active=false;
   int time_appearing_of_skill3_from_character1=50;
   int time_watting_of_skill3_from_character1=0;
   bool character2_can_not_move=false;
+
+
   //set gravity for character1
   bool can_character1_jump=false;
   double set_time_in_the_air_of_character1=0;
   double v_of_character1=0;
+
+  //set gravity for character2
+  bool can_character2_jump=false;
+  double set_time_in_the_air_of_character2=0;
+  double v_of_character2=12;
+  int chance_to_jump_of_AI=0;
 bool init(){
      bool success=true;
      if(SDL_Init(SDL_INIT_VIDEO)<0){
