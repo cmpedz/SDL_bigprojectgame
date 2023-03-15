@@ -505,7 +505,7 @@
 
 1678371490 c:\users\admin\downloads\sans vs chara(new update) 1.0\gravity.h
 
-1678797832 source:c:\users\admin\desktop\bách khoa\sans vs chara\main.cpp
+1678877437 source:c:\users\admin\desktop\bách khoa\sans vs chara\main.cpp
 	<iostream>
 	<math.h>
 	<SDL.h>
@@ -516,6 +516,7 @@
 	"background.h"
 	"character.h"
 	"character2.h"
+	"miss_effect.h"
 	"character2_skill2.h"
 	"character2_skill3.h"
 	"moving_right.h"
@@ -549,7 +550,7 @@
 
 1678721440 c:\users\admin\desktop\bách khoa\sans vs chara\moving_left.h
 
-1678728394 c:\users\admin\desktop\bách khoa\sans vs chara\health_bar.h
+1678883044 c:\users\admin\desktop\bách khoa\sans vs chara\health_bar.h
 
 1678727584 c:\users\admin\desktop\bách khoa\sans vs chara\skill1_of_character1.h
 
@@ -561,11 +562,13 @@
 
 1678721445 c:\users\admin\desktop\bách khoa\sans vs chara\winner.h
 
-1678798408 c:\users\admin\desktop\bách khoa\sans vs chara\event loop.h
+1678883044 c:\users\admin\desktop\bách khoa\sans vs chara\event loop.h
 
 1678721438 source:c:\users\admin\desktop\bách khoa\sans vs chara\gravity.cpp
 	"gravity.h"
 	<SDL.h>
 
-1678798935 c:\users\admin\desktop\bách khoa\sans vs chara\character2_skill3.h
+1678876650 c:\users\admin\desktop\bách khoa\sans vs chara\character2_skill3.h
+
+1678878178 c:\users\admin\desktop\bách khoa\sans vs chara\miss_effect.h
 

@@ -18,7 +18,10 @@ void eventloop(){
       SDL_Event e;
       bool quit=false;
       set_skill3_of_character2();
+      set_lose_health_1();
+      set_lose_health_2();
       set_value_for_ingradient_of_skill2_of_character1();
+      set_effect_miss();
       while(!quit){
            while(SDL_PollEvent(&e)!=0){
                 if(e.type==SDL_QUIT){
@@ -176,7 +179,12 @@ void eventloop(){
               if(did_character1_get_hit && health_bar_2_of_character1 >0){
                  health_bar_2_of_character1=health_bar_2_of_character1-5;
                  health_bar_2_for_character1.settdx(health_bar_1_for_character1.gettdx()-5);
+                 key_active_effect_of_losing_health1=true;
+                 set_lose_health_1_appear(tdx_character1,tdy_character1);
                  did_character1_get_hit=false;
+              }
+              else{
+                  key_active_effect_of_losing_health1=false;
               }
               //
              if((SDL_GetTicks()-time_appearing_of_skill1_from_AI)/200>=7){
@@ -200,8 +208,12 @@ void eventloop(){
            if(did_character2_get_hit){
               health_bar_2_of_character2=health_bar_2_of_character2-1;
               tdx_health_bar_2_of_character2=tdx_health_bar_2_of_character2+1;
-              cout<<"hit 1"<<endl;
+              key_active_effect_of_losing_health2=true;
+              set_lose_health_2_appear(tdx_character2,tdy_character2);
               if(health_bar_2_of_character2<0){ health_bar_2_of_character2=0; }
+           }
+           else{
+               key_active_effect_of_losing_health2=false;
            }
 
 
@@ -216,8 +228,10 @@ void eventloop(){
                 tdx_character2=tdx_character2+50;
                 if(tdx_character2>1000){ tdx_character2=1000;}
             }
+            key_active_effect_miss=true;
             chance_to_teleport=0;
         }
+
 
 
 
@@ -244,10 +258,14 @@ void eventloop(){
                       did_character2_get_hit=false;
                   }
                    if(did_character2_get_hit){
-                         cout<<"hit 2"<<endl;
                       health_bar_2_of_character2=health_bar_2_of_character2-5;
                       tdx_health_bar_2_of_character2=tdx_health_bar_2_of_character2+5;
+                      key_active_effect_of_losing_health2=true;
+                      set_lose_health_2_appear(tdx_character2,tdy_character2);
                        if(health_bar_2_of_character2<0){ health_bar_2_of_character2=0; }
+                   }
+                   else{
+                       key_active_effect_of_losing_health2=false;
                    }
 
               }
@@ -261,7 +279,6 @@ void eventloop(){
                             can_character2_jump=true;
                             set_time_in_the_air_of_character2=SDL_GetTicks();
                             chance_to_jump_of_AI=100;
-                            cout<<"jump1"<<endl;
                           }
     }
 
@@ -282,7 +299,6 @@ void eventloop(){
 
                 if(tdy_character2<tdy_of_ground || can_character2_jump){
                         tdy_character2=tdy_character2-set_gravity(v_of_character2,set_time_in_the_air_of_character2);
-                        cout<<"miss 2"<<endl;
                         if(tdy_character2>tdy_of_ground){
                             tdy_character2=tdy_of_ground;
                             can_character2_jump=false;
@@ -316,8 +332,12 @@ void eventloop(){
               if(did_character2_get_hit){
                  health_bar_2_of_character2=health_bar_2_of_character2-1;
                  tdx_health_bar_2_of_character2=tdx_health_bar_2_of_character2+1;
-                  cout<<"hit 3"<<endl;
+                 key_active_effect_of_losing_health2=true;
+                 set_lose_health_2_appear(tdx_character2,tdy_character2);
                  if(health_bar_2_of_character2<0){ health_bar_2_of_character2=0; }
+              }
+              else{
+                  key_active_effect_of_losing_health2=false;
               }
             }
               else{
@@ -345,8 +365,13 @@ void eventloop(){
              if(did_character1_get_hit && health_bar_2_of_character1 >0 && tdy_of_skill2_character2-5<=tdy_character1 && tdy_of_skill2_character2+5>=tdy_character1){
                  health_bar_2_of_character1=health_bar_2_of_character1-50;
                  health_bar_2_for_character1.settdx(health_bar_1_for_character1.gettdx()-50);
+                 key_active_effect_of_losing_health1=true;
+                 set_lose_health_1_appear(tdx_character1,tdy_character1);
                  did_character1_get_hit=false;
                  time_watting_for_skill2_of_AI=100;
+              }
+              else{
+                key_active_effect_of_losing_health1=false;
               }
           }
           }
@@ -354,9 +379,60 @@ void eventloop(){
 
           // set skill3 of Ai active
           set_skill3_of_character2_active();
+          // set skill3 of AI make damage on player
+
+          // first damage
+          if((tdx_for_ingradient_of_skill3_character2[0]+5>=tdx_character1 &&
+             tdx_for_ingradient_of_skill3_character2[0]-5<=tdx_character1 &&
+             tdy_for_ingradient_of_skill3_character2[0]+5 >= tdy_character1 &&
+             tdy_for_ingradient_of_skill3_character2[0]-5 <= tdy_character1)||
+
+             (tdx_for_ingradient_of_skill3_character2[1]+5>=tdx_character1 &&
+             tdx_for_ingradient_of_skill3_character2[1]-5<=tdx_character1 &&
+             tdy_for_ingradient_of_skill3_character2[1]+5 >= tdy_character1 &&
+             tdy_for_ingradient_of_skill3_character2[1]-5 <= tdy_character1)){
+             did_character1_get_hit=true;
+          }
+          else{ did_character1_get_hit=false; }
+           if(did_character1_get_hit && health_bar_2_of_character1 >0){
+                 health_bar_2_of_character1=health_bar_2_of_character1-10;
+                 health_bar_2_for_character1.settdx(health_bar_1_for_character1.gettdx()-10);
+                 key_active_effect_of_losing_health1=true;
+                 set_lose_health_1_appear(tdx_character1,tdy_character1);
+                 did_character1_get_hit=false;
+              }
+              else{
+                  key_active_effect_of_losing_health1=false;
+              }
+          //second damage
+          if((is_effect_for_ingrident_of_skill3_of_AI_actived[0] &&
+             tdy_character1 <= tdy_for_ingradient_of_skill3_character2[0]+2 &&
+             tdy_character1 >= tdy_for_ingradient_of_skill3_character2[0]-2) ||
+             (is_effect_for_ingrident_of_skill3_of_AI_actived[1] &&
+             tdx_character1 <= tdx_of_effect_of_skill3_of_AI_copy+5 &&
+             tdx_character1 >= tdx_of_effect_of_skill3_of_AI_copy-5 )){
+             did_character1_get_hit=true;
+          }
+          else{
+              did_character1_get_hit=false;
+          }
 
 
+          if(did_character1_get_hit && health_bar_2_of_character1 >0){
+                 health_bar_2_of_character1=health_bar_2_of_character1-5;
+                 health_bar_2_for_character1.settdx(health_bar_1_for_character1.gettdx()-5);
+                 key_active_effect_of_losing_health1=true;
+                 set_lose_health_1_appear(tdx_character1,tdy_character1);
+                 did_character1_get_hit=false;
 
+          }
+          else{ key_active_effect_of_losing_health1=false;}
+
+
+          //set effect miss for AI
+          set_effect_miss_active();
+
+          //
           set_health_bar_for_character1(health_bar_2_of_character1);
           set_health_bar_for_character2(health_bar_2_of_character2,tdx_health_bar_2_of_character2);
            //

@@ -9,6 +9,7 @@ using namespace std;
 #include"background.h"
 #include"character.h"
 #include"character2.h"
+#include"miss_effect.h"
 #include"character2_skill2.h"
 #include"character2_skill3.h"
 #include"moving_right.h"

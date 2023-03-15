@@ -49,6 +49,7 @@
 		<Unit filename="health_bar.h" />
 		<Unit filename="loadmedia.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="miss_effect.h" />
 		<Unit filename="moving_left.h" />
 		<Unit filename="moving_right.h" />
 		<Unit filename="skill1_of_character1.h" />
