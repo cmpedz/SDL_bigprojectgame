@@ -54,7 +54,7 @@ void set_skill3_of_character2(){
 
 
 void set_skill3_of_character2_active(){
-     if(SDL_GetTicks()/1000 % 5==0 && SDL_GetTicks()/1000 !=0 ){
+     if((SDL_GetTicks()-time_in_game)/1000 % 5==0 && (SDL_GetTicks()-time_in_game)/1000 !=0 ){
         is_ingradient_of_skill3_from_character2_actived[0]=true;
         is_ingradient_of_skill3_from_character2_actived[1]=true;
 

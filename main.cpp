@@ -6,6 +6,8 @@ using namespace std;
 #include"common function.h"
 #include"loadmedia.h"
 #include"texture.h"
+#include"giao_dien_game.h"
+#include"tutorial_background.h"
 #include"background.h"
 #include"character.h"
 #include"character2.h"

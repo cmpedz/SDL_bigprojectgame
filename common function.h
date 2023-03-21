@@ -41,6 +41,7 @@ const int tdy_of_ground=height_of_screen/4*3;
   bool is_skill2_of_character2_actived=false;
 
 
+
   //set skill1 for character 1
   int skill1_of_character1_frame=0;
   int time_appearing_of_skill1_from_character1=0;
@@ -80,6 +81,9 @@ const int tdy_of_ground=height_of_screen/4*3;
   double set_time_in_the_air_of_character2=0;
   double v_of_character2=12;
   int chance_to_jump_of_AI=0;
+
+  bool thay_doi_giao_dien_tu_man_hinh_chinh_sang_giao_dien_game=false;
+  int time_in_game=0;
 bool init(){
      bool success=true;
      if(SDL_Init(SDL_INIT_VIDEO)<0){
