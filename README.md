@@ -1,4 +1,5 @@
 -ở phần này em đã thêm các tính năng mới cho game :
+
 +em đâ xây dựng giao diện phần màn hình chính
 +xây dựng giao diện cho phần hướng dẫn
 
