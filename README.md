@@ -1,12 +1,9 @@
 -ở phần này em đã thêm các tính năng mới cho game :
-+ set trọng lực cho player trong game
-+ tạo thanh máu và hiệu ứng mất máu
-+ set giao diện game over và win
-+ set thêm skill 1,2,3 cho player và skill2 cho AI
-+ chỉnh sửa cách di chuyển cho player để bớt bị giật
++em đâ xây dựng giao diện phần màn hình chính
++xây dựng giao diện cho phần hướng dẫn
 
 - mục tiêu tiếp theo :
-+ set trọng lực cho AI và set nha AI tự biết né đòn
-+ set skill3 cho AI
-+ điều chỉnh lại skill của AI và player sao cho đúng tung độ với nhân vật
-+ sắp xếp lại thư viện theo cách cơ bản đã học trên lớp
++ thiết kết nút quay lại và tiếp tục để chơi lại game
++ thiết kế thêm cho phần chọn bản đồ hoặc skin nhân vật
++ học font chữ + điều chỉnh fps để game mượt hơn
++ thêm một số tính năng cho phần game chính
