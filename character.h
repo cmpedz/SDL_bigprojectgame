@@ -1,10 +1,11 @@
-#ifndef texture
-#define texture
- texture;
+#ifndef character
+#define character
+#include"texture.h"
+const int quatity_of_frame_character1=4;
+SDL_Rect character1_clip[quatity_of_frame_character1];
 #endif // character
 void character_1(int tdx_character1,int tdy_character1,int character1_frame,bool r,bool l){
-         const int quatity_of_frame_character1=4;
-         SDL_Rect character1_clip[quatity_of_frame_character1];
+
          character1_clip[0].h=299;
          character1_clip[0].w=177;
          character1_clip[0].x=0;

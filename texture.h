@@ -108,3 +108,4 @@ int skill_attack_directly_of_AI_frame=0;
 const int quatity_of_frame_skill1_AI=7;
 SDL_Rect skill1_of_AI_clip[ quatity_of_frame_skill1_AI];
 #endif // texture
+

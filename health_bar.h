@@ -1,6 +1,6 @@
-#ifndef texture
-#define texture
-texture
+#ifndef Health_bar
+#define Health_bar
+#include"texture.h"
 #endif // texture
 
        void set_health_bar_for_character1(double health_bar_2_of_character1){
@@ -105,4 +105,25 @@ texture
               tdy_of_losing_effect2=height_of_screen/4*3;
           }
 
+      }
+
+      void set_ch1_loses_health(double &mhealth_bar_2_of_character1,Ltexture mhealth_bar_2_for_character1,
+                                int mlosing_health_of_ch1,bool &mkey_active_effect_of_losing_health1,
+                                int x,int y,bool &mdid_character1_get_hit){
+           mhealth_bar_2_of_character1=mhealth_bar_2_of_character1-mlosing_health_of_ch1;
+           mhealth_bar_2_for_character1.settdx(mhealth_bar_2_for_character1.gettdx()-mlosing_health_of_ch1);
+           mkey_active_effect_of_losing_health1=true;
+           set_lose_health_1_appear(x,y);
+           mdid_character1_get_hit=false;
+      }
+
+
+      void set_ch2_loses_health(double &mhealth_bar_2_of_character2,Ltexture mhealth_bar_2_for_character2,
+                                int mlosing_health_of_ch2,bool &mkey_active_effect_of_losing_health2,
+                                int x,int y,bool &mdid_character2_get_hit,double &mtdx_health_bar_2_of_character2){
+           mhealth_bar_2_of_character2=mhealth_bar_2_of_character2-mlosing_health_of_ch2;
+           mtdx_health_bar_2_of_character2=mtdx_health_bar_2_of_character2+mlosing_health_of_ch2;
+           mkey_active_effect_of_losing_health2=true;
+           set_lose_health_2_appear(x,y);
+           mdid_character2_get_hit=false;
       }

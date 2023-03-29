@@ -14,13 +14,14 @@ void set_effect_miss(){
      effect_miss_of_AI.setheight(48);
      effect_miss_of_AI.setwidth(48);
 }
-void set_effect_miss_active(){
-     if(key_active_effect_miss){
+void set_effect_miss_active(bool &mkey_active_effect_miss){
+     if(mkey_active_effect_miss){
         if((SDL_GetTicks()-time_appearing_of_effect_miss)/100<=2){
            effect_miss_of_AI.render(NULL);
         }
         else{
-             key_active_effect_miss=false;
+             mkey_active_effect_miss=false;
+             chance_to_teleport=200;
         }
 
      }

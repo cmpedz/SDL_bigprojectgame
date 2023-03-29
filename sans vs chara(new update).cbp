@@ -36,7 +36,9 @@
 		<Linker>
 			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/lib" />
 		</Linker>
+		<Unit filename="AI_moving.h" />
 		<Unit filename="background.h" />
+		<Unit filename="button.h" />
 		<Unit filename="character.h" />
 		<Unit filename="character2.h" />
 		<Unit filename="character2_skill2.h" />

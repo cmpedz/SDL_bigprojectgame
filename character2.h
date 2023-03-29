@@ -1,10 +1,11 @@
-#ifndef texture
-#define texture
-texture;
+#ifndef mcharacter2
+#define mcharacter2
+#include"texture.h"
+const int quatity_of_frame_character2=2;
+SDL_Rect character2_clip[quatity_of_frame_character2];
 #endif // character
 void AI(int tdx_character2, int tdy_character2,int character2_frame,bool r,bool l){
-         const int quatity_of_frame_character2=2;
-         SDL_Rect character2_clip[quatity_of_frame_character2];
+
          character2_clip[0].h=29;
          character2_clip[0].w=21;
          character2_clip[0].x=0;

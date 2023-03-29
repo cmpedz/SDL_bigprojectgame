@@ -3,7 +3,7 @@
 texture
 #endif // texture
 
-const int quatities_of_bone=4;
+const int quatities_of_bone=3;
 Ltexture skill2_of_character1[quatities_of_bone];
 int tdx_for_ingradient_of_skill2_character1[quatities_of_bone];
 int tdy_for_ingradient_of_skill2_character1[quatities_of_bone];

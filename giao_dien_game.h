@@ -1,17 +1,8 @@
 #ifndef GIAO_DIEN_GAME_H_INCLUDED
 #define GIAO_DIEN_GAME_H_INCLUDED
 #include"texture.h"
+#include"button.h"
 // create handmade button
-const int button_width=415/3*2;
-const int button_height=125/3*2;
-const int button_total=1;
-enum button_event{
-     button_event_mouse_out=0,
-     button_event_mouse_over_motion=1,
-     button_event_mouse_down=2,
-     button_event_mouse_up=3,
-     button_event_mouse_total=4
-};
 
 int start_button_frame=0;
 const int quality_of_start_button_frame=2;
@@ -78,51 +69,6 @@ bool is_bonus_sprite2_for_start_button_active=false;
 bool is_bonus_sprite2_for_tutorial_button_active=false;
 
 int time_in_interface_of_game=0;
-
-
-class button
-{
-    public:
-        // hàm khởi tạo giá trị mặc định
-        button();
-
-        // hàm thiết lập vị trí
-        void setPosition( int x, int y);
-
-        //hàm quản lý vòng lặp sự kiện
-        void handleEvent( SDL_Event* e );
-
-
-        int gettdx();
-        int gettdy();
-
-    private:
-        //vị trí của con trỏ chuột
-        SDL_Point position;
-
-        //
-        button_event current_sprite;
-};
-button::button(){
-       position.x=0;
-       position.y=0;
-       current_sprite=button_event_mouse_out;
-}
-void button::setPosition(int x,int y){
-     position.x=x;
-     position.y=y;
-}
-int tdx_of_my_mouse=0;
-int tdy_of_my_mouse=0;
-
-
-
-int button :: gettdx(){
-    return position.x;
-}
-int button :: gettdy(){
-    return position.y;
-}
 
 
 button start_button_system[button_total];
@@ -309,7 +255,8 @@ void set_bonus_sprite_active_when_mouse_up_or_down(bool &condition){
                     bonus_sprite1_for_button_frame++;
                     if(bonus_sprite1_for_button.gettdx()<=0){
                        is_bonus_sprite2_for_start_button_active=false;
-                       thay_doi_giao_dien_tu_man_hinh_chinh_sang_giao_dien_game=true;
+                       reset_everything_in_game=true;
+                       time_watting_change_interface=0;
                        bonus_sprite1_for_button_frame=0;
                        bonus_sprite2_for_button.setwidth(20);
                        bonus_sprite1_for_button.settdx(start_button_system[0].gettdx()-114/2);
@@ -341,6 +288,54 @@ void set_bonus_sprite_active_when_mouse_up_or_down(bool &condition){
                     }
                 }
 
+
+}
+void reset_everything_in_main_interface_active(){
+        start_button_system[0].setPosition(width_of_screen/2-button_width/2,height_of_screen/2-button_height/2);
+		image_start.settdx(-start_button_system[0].gettdx());
+		image_start.settdy(start_button_system[0].gettdy());
+
+	    tutorial_button_system[0].setPosition(width_of_screen/2-button_width/2,height_of_screen/2-button_height/2+150);
+		image_tutorial.settdx(-tutorial_button_system[0].gettdx());
+		image_tutorial.settdy(tutorial_button_system[0].gettdy());
+
+		quit_button_system[0].setPosition(width_of_screen/2-button_width/2,height_of_screen/2-button_height/2+300);
+		image_quit.settdx(-quit_button_system[0].gettdx());
+		image_quit.settdy(quit_button_system[0].gettdy());
+
+        sans_in_bg.setheight(640);
+		sans_in_bg.setwidth(640);
+        sans_in_bg.settdx(0-640);
+		sans_in_bg.settdy(height_of_screen);
+
+
+        soul_of_sans_in_bg.setheight(640);
+		soul_of_sans_in_bg.setwidth(640);
+        soul_of_sans_in_bg.settdx(sans_in_bg.gettdx()+20);
+		soul_of_sans_in_bg.settdy(sans_in_bg.gettdy()-100);
+
+        chara_in_bg.setheight(286);
+		chara_in_bg.setwidth(442);
+        chara_in_bg.settdx(width_of_screen);
+		chara_in_bg.settdy(0-286);
+
+        soul_of_chara_in_bg.setheight(640);
+		soul_of_chara_in_bg.setwidth(640);
+        soul_of_chara_in_bg.settdx(chara_in_bg.gettdx()-100);
+		soul_of_chara_in_bg.settdy(chara_in_bg.gettdy()+100);
+
+		repeat_moving_of_chara=false;
+		repeat_moving_of_sans=false;
+		repeat_moving_of_soul_of_chara=false;
+		repeat_moving_of_soul_of_sans=false;
+
+		is_bonus_sprite1_for_end_button_active=false;
+		is_bonus_sprite1_for_start_button_active=false;
+		is_bonus_sprite1_for_tutorial_button_active=false;
+		is_bonus_sprite2_for_start_button_active=false;
+		is_bonus_sprite2_for_tutorial_button_active=false;
+		bonus_sprite1_for_button_frame=0;
+		time_in_interface_of_game=SDL_GetTicks();
 
 }
 
