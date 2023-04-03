@@ -8,6 +8,6 @@ texture;
          background.settdy(0);
          background.setheight(height_of_screen);
          background.setwidth(width_of_screen);
-         background.loadtexture("background.bmp");
+         background.loadtexture("background.bmp");//
          background.render(NULL);
      }
