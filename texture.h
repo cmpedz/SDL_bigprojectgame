@@ -1,19 +1,28 @@
 
 #ifndef texture
 #define texture
+#include<SDL.h>
+#include<iostream>
 class Ltexture{
 public :
        Ltexture();
        ~Ltexture();
        void free();
-       bool loadtexture(string s);
+       bool loadtexture(std::string s);
        void render(SDL_Rect*clip);
        int gettdx();
        int gettdy();
+       int getwidth();
+       int getheight();
        void settdx(int x);
        void settdy(int y);
        void setheight(int h);
        void setwidth(int w);
+       //Set blending
+       void setBlendMode( SDL_BlendMode blending );
+
+        //Set alpha modulation
+       void setAlpha( Uint8 alpha );
 private :
         SDL_Texture*image;
         int height,width,x,y;
@@ -32,21 +41,22 @@ void Ltexture::free(){
 Ltexture::~Ltexture(){
      free();
 }
-bool Ltexture::loadtexture(string s){
+bool Ltexture::loadtexture(std::string s){
      bool success=true;
      SDL_Surface*loadedimage=SDL_LoadBMP(s.c_str());
      if(loadedimage==NULL){
-        cout<<"failed to load image"<<endl<<"error :"<<SDL_GetError();
+        std::cout<<"failed to load image"<<std::endl<<"error1 :"<<SDL_GetError();
         success=false;
      }
      else{
          SDL_SetColorKey(loadedimage,SDL_TRUE,SDL_MapRGB(loadedimage->format,255,0,0));
          image=SDL_CreateTextureFromSurface(renderer,loadedimage);
          if(image==NULL){
-            cout<<"failed to load image texture"<<endl<<"error :"<<SDL_GetError();
+            std::cout<<"failed to load image texture"<<std::endl<<"error2 :"<<SDL_GetError();
             success=false;
          }
      }
+     SDL_FreeSurface(loadedimage);
      return success;
 }
 void Ltexture::render(SDL_Rect*clip){
@@ -63,6 +73,12 @@ int Ltexture::gettdx(){
 int Ltexture::gettdy(){
     return y;
 };
+int Ltexture::getwidth(){
+    return width;
+};
+int Ltexture::getheight(){
+    return height;
+};
 void Ltexture::settdx(int td_x){
      x=td_x;
 };
@@ -75,11 +91,25 @@ void Ltexture::setheight(int h){
 void Ltexture::setwidth(int w){
      width=w;
 };
-Ltexture background;
-Ltexture character1;
-Ltexture character2;
-Ltexture skill1_of_AI;
-int skill_attack_directly_of_AI_frame=0;
-const int quatity_of_frame_skill1_AI=7;
-SDL_Rect skill1_of_AI_clip[ quatity_of_frame_skill1_AI];
+
+void Ltexture::setBlendMode( SDL_BlendMode blending )
+{
+    //Set blending function
+    SDL_SetTextureBlendMode( image, blending );
+}
+
+void Ltexture::setAlpha( Uint8 alpha )
+{
+    //Modulate texture alpha
+    SDL_SetTextureAlphaMod( image, alpha );
+}
+
+
+
+
+
+
+
+
 #endif // texture
+

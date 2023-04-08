@@ -31,21 +31,41 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="C:/Users/Admin/Desktop/sth in c++/sdl libr/include/SDL2" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/include/SDL2" />
 		</Compiler>
 		<Linker>
-			<Add directory="C:/Users/Admin/Desktop/sth in c++/sdl libr/lib" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/lib" />
 		</Linker>
+		<Unit filename="AI_moving.h" />
 		<Unit filename="background.h" />
+		<Unit filename="button.h" />
 		<Unit filename="character.h" />
 		<Unit filename="character2.h" />
+		<Unit filename="character2_skill2.h" />
+		<Unit filename="character2_skill3.h" />
 		<Unit filename="common function.h" />
 		<Unit filename="event loop.h" />
+		<Unit filename="free_texture.h" />
+		<Unit filename="game_over.h" />
+		<Unit filename="giao_dien_game.h" />
+		<Unit filename="gravity.cpp" />
+		<Unit filename="gravity.h" />
+		<Unit filename="health_bar.h" />
 		<Unit filename="loadmedia.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="miss_effect.h" />
 		<Unit filename="moving_left.h" />
 		<Unit filename="moving_right.h" />
+		<Unit filename="pause_button_icon.h" />
+		<Unit filename="skill1_of_character1.h" />
+		<Unit filename="skill2_of_character1.h" />
+		<Unit filename="skill3_of_character1.h" />
+		<Unit filename="stopping_setting.h" />
 		<Unit filename="texture.h" />
+		<Unit filename="time_watting_skill_of_player_icon.h" />
+		<Unit filename="timer.h" />
+		<Unit filename="tutorial_background.h" />
+		<Unit filename="winner.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

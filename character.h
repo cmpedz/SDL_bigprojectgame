@@ -1,10 +1,36 @@
-#ifndef texture
-#define texture
- texture;
+#ifndef character
+#define character
+#include"texture.h"
+#include"gravity.h"
+const int quatity_of_frame_character1=4;
+SDL_Rect character1_clip[quatity_of_frame_character1];
+int character1_frame=0;
+int tdx_character1=0;
+int tdy_character1=height_of_screen/4*3;
+Ltexture character1;
+double saving_time_jumping_when_stopping_game1=0;
+
+  bool can_character1_jump=false;
+  double set_time_in_the_air_of_character1=0;
+  double v_of_character1=0;
+
+
 #endif // character
+void reset_ch1(){
+    character1_frame=0;
+    tdx_character1=0;
+    tdy_character1=height_of_screen/4*3;
+
+    saving_time_jumping_when_stopping_game1=0;
+
+     can_character1_jump=false;
+        set_time_in_the_air_of_character1=0;
+        v_of_character1=0;
+
+
+}
 void character_1(int tdx_character1,int tdy_character1,int character1_frame,bool r,bool l){
-         const int quatity_of_frame_character1=4;
-         SDL_Rect character1_clip[quatity_of_frame_character1];
+
          character1_clip[0].h=299;
          character1_clip[0].w=177;
          character1_clip[0].x=0;
@@ -37,3 +63,20 @@ void character_1(int tdx_character1,int tdy_character1,int character1_frame,bool
         }
         character1.render(&character1_clip[character1_frame/20]);
         }
+
+
+void set_chr1_jump(bool &_can_character1_jump,int &_tdy_character1,const int _tdy_of_ground,
+                   double _set_time_in_the_air_of_character1,double _v_of_character1,double &saving_time_jumping_when_stopping_game1
+                   ,bool &stopping_time){
+
+     if(_can_character1_jump && !stopping_time){
+              _tdy_character1=_tdy_character1-set_gravity(_v_of_character1,_set_time_in_the_air_of_character1,saving_time_jumping_when_stopping_game1);
+                if(_tdy_character1>=_tdy_of_ground){
+                  _tdy_character1=_tdy_of_ground;
+                  _can_character1_jump=false;
+                }
+
+     }
+
+
+}
