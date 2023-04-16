@@ -31,21 +31,50 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="C:/Users/Admin/Desktop/sth in c++/sdl libr/include/SDL2" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/SDL_tff/include/SDL2" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/SDL.h/include/SDL2" />
 		</Compiler>
 		<Linker>
-			<Add directory="C:/Users/Admin/Desktop/sth in c++/sdl libr/lib" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/SDL_tff/lib" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/SDL.h/lib" />
 		</Linker>
-		<Unit filename="background.h" />
-		<Unit filename="character.h" />
-		<Unit filename="character2.h" />
-		<Unit filename="common function.h" />
-		<Unit filename="event loop.h" />
-		<Unit filename="loadmedia.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="moving_left.h" />
-		<Unit filename="moving_right.h" />
-		<Unit filename="texture.h" />
+		<Unit filename="library/AI_moving.h" />
+		<Unit filename="library/background.h" />
+		<Unit filename="library/button.h" />
+		<Unit filename="library/character.h" />
+		<Unit filename="library/character2.h" />
+		<Unit filename="library/character2_skill2.h" />
+		<Unit filename="library/character2_skill3.h" />
+		<Unit filename="library/choice_menu.h" />
+		<Unit filename="library/choose_map.h" />
+		<Unit filename="library/choose_skin_interface.h" />
+		<Unit filename="library/common function.h" />
+		<Unit filename="library/error_sans_bonus.h" />
+		<Unit filename="library/event loop.h" />
+		<Unit filename="library/font_in_game.h" />
+		<Unit filename="library/free_texture.h" />
+		<Unit filename="library/game_over.h" />
+		<Unit filename="library/giao_dien_game.h" />
+		<Unit filename="library/gravity.h" />
+		<Unit filename="library/health_bar.h" />
+		<Unit filename="library/loadmedia.h" />
+		<Unit filename="library/miss_effect.h" />
+		<Unit filename="library/moving_left.h" />
+		<Unit filename="library/moving_right.h" />
+		<Unit filename="library/no_effect.h" />
+		<Unit filename="library/pause_and_music_button.h" />
+		<Unit filename="library/pause_button_icon.h" />
+		<Unit filename="library/skill1_of_character1.h" />
+		<Unit filename="library/skill2_of_character1.h" />
+		<Unit filename="library/skill3_of_character1.h" />
+		<Unit filename="library/stopping_setting.h" />
+		<Unit filename="library/texture.h" />
+		<Unit filename="library/time_watting_skill_of_player_icon.h" />
+		<Unit filename="library/timer.h" />
+		<Unit filename="library/tutorial_background.h" />
+		<Unit filename="library/winner.h" />
+		<Unit filename="sourecpp/gravity.cpp" />
+		<Unit filename="sourecpp/main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
