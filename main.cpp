@@ -1,47 +1,57 @@
 #include <iostream>
+#include<math.h>
+#include<fstream>
 using namespace std;
 #include<SDL.h>
-#include"common function.h"
-#include"loadmedia.h"
-#include"texture.h"
-#include"background.h"
-#include"character.h"
-#include"character2.h"
-#include"moving_right.h"
-#include"moving_left.h"
-#include"event loop.h"
-int main(int arcg,char*argv[])
-{
-  eventloop();
-  /*if(!init()){
-     cout<<"failed to load SDL"<<endl;
-  }
-  else{
-      if(!loadedmedia(true)){
-         cout<<"failed to load media"<<endl;
-      }
-  else{
-   bool quit=false;
-   SDL_Event e;
-   while(!quit){
-           while(SDL_PollEvent(&e)!=0){
-                if(e.type==SDL_QUIT){
-                  quit=true;
-                }
-           }
+#include<SDL_ttf.h>
+#include"../library/gravity.h"
+#include"../library/common function.h"
+#include"../library/loadmedia.h"
+#include"../library/texture.h"
+#include"../library/font_in_game.h"
+#include"../library/timer.h"
+#include"../library/button.h"
+#include"../library/giao_dien_game.h"
+#include"../library/choice_menu.h"
+#include"../library/choose_skin_interface.h"
+#include"../library/choose_map.h"
+#include"../library/tutorial_background.h"
+#include"../library/background.h"
+#include"../library/time_watting_skill_of_player_icon.h"
+#include"../library/pause_button_icon.h"
+#include"../library/error_sans_bonus.h"
+#include"../library/character.h"
+#include"../library/character2.h"
+#include"../library/miss_effect.h"
+#include"../library/no_effect.h"
+#include"../library/character2_skill2.h"
+#include"../library/character2_skill3.h"
+#include"../library/AI_moving.h"
+#include"../library/moving_right.h"
+#include"../library/moving_left.h"
+#include"../library/health_bar.h"
+#include"../library/skill1_of_character1.h"
+#include"../library/skill2_of_character1.h"
+#include"../library/skill3_of_character1.h"
+#include"../library/game_over.h"
+#include"../library/winner.h"
+#include"../library/free_texture.h"
+#include"../library/stopping_setting.h"
+#include"../library/event loop.h"
+#define RIGHT 1
+#define LEFT 2
 
-                SDL_RenderClear(renderer);
-                AI_skill1();
-                if(skill_attack_directly_of_AI_frame/5>=7){
-                  skill_attack_directly_of_AI_frame=7;
-                }
-                skill1_of_AI.render(&skill1_of_AI_clip[skill_attack_directly_of_AI_frame/5]);
-                skill_attack_directly_of_AI_frame++;
-                cout<<skill_attack_directly_of_AI_frame<<endl;
-                SDL_RenderPresent(renderer);
-                SDL_Delay(1000);
-   }
-  }
-  }*/
+int main(int arcg,char*argv[])
+{ int point_of_player=0;
+  ifstream ip_point("point_of_player.txt");
+  ip_point>>point_of_player;
+  ofstream op_point("point_of_player.txt");
+  eventloop(point_of_player);
+  close();
+  op_point<<point_of_player;
+  cout<<point_of_player<<endl;
+
+  cout<<"thanks for playing"<<endl;
+
   return 0;
 }
