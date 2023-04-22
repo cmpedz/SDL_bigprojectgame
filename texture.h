@@ -8,7 +8,8 @@ public :
        Ltexture();
        ~Ltexture();
        void free();
-       bool loadtexture(std::string s);
+       bool loadtexture(std::string s); // default color background
+       bool loadtexture(std::string s,Uint8 r,Uint8 g,Uint8 b); // choose color of background you want to remove
        void render(SDL_Rect*clip);
        int gettdx();
        int gettdy();
@@ -61,6 +62,28 @@ bool Ltexture::loadtexture(std::string s){
      SDL_FreeSurface(loadedimage);
      return success;
 }
+
+
+bool Ltexture::loadtexture(std::string s,Uint8 r,Uint8 g,Uint8 b){
+     bool success=true;
+     SDL_Surface*loadedimage=SDL_LoadBMP(s.c_str());
+     if(loadedimage==NULL){
+        std::cout<<"failed to load image"<<std::endl<<"error1 :"<<SDL_GetError();
+        success=false;
+     }
+     else{
+         SDL_SetColorKey(loadedimage,SDL_TRUE,SDL_MapRGB(loadedimage->format,r,g,b));
+         image=SDL_CreateTextureFromSurface(renderer,loadedimage);
+         if(image==NULL){
+            std::cout<<"failed to load image texture"<<std::endl<<"error2 :"<<SDL_GetError();
+            success=false;
+         }
+     }
+     SDL_FreeSurface(loadedimage);
+     return success;
+}
+
+
 void Ltexture::render(SDL_Rect*clip){
      SDL_Rect size_and_position_of_character;
      size_and_position_of_character.h=height;

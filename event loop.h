@@ -175,8 +175,7 @@ void eventloop(int &p){
                         right_1=true;
                         choose_right_1=true;
                         choose_left_1=false;
-                        left_for_skill2_of_character1=false;
-                        right_for_skill2_of_character1=true;
+
                         break;
                    case SDLK_LEFT :
                         time_run_of_character1=SDL_GetTicks();
@@ -184,11 +183,13 @@ void eventloop(int &p){
                         left_1=true;
                         choose_left_1=true;
                         choose_right_1=false;
-                        left_for_skill2_of_character1=true;
-                        right_for_skill2_of_character1=false;
+
                         break;
                    case SDLK_1 :
-                        if(time_watting_for_skill1_of_character1==0){
+                        if(time_watting_for_skill1_of_character1==0 &&
+                           !(sprite_for_ch_get_dam_by_skill1_of_AI || sprite_for_ch_get_dam_by_skill2_of_AI|| sprite_for_ch_get_dam_by_skill3_of_AI)&&
+                           !delay_skill_of_player){
+                          delay_skill_of_player=true;
                           does_skill1_of_character1_active=true;
                           tdx_skill1_of_character1=character2.gettdx();
                           tdy_skill1_of_character1=character2.gettdy()-100;
@@ -197,30 +198,26 @@ void eventloop(int &p){
                           height_of_beam=0;
                           width_of_beam=0;
                           skill1_of_character1_frame=0;
+                          can_character1_run_after_using_skill1=false;
+                          character_frame_use_skill1=0;
                         }
                         break;
                    case SDLK_2 :
-                        if(time_watting_of_skill2_from_character1==0){
-                          set_skill2_of_character1();
-                          quatities_of_skill2_for_character1++;
+                        if(time_watting_of_skill2_from_character1==0 &&
+                           !(sprite_for_ch_get_dam_by_skill1_of_AI || sprite_for_ch_get_dam_by_skill2_of_AI|| sprite_for_ch_get_dam_by_skill3_of_AI)&&
+                           !delay_skill_of_player){
 
-
-                           if(quatities_of_skill2_for_character1 >=4){
-                             quatities_of_skill2_for_character1=3;
-
-                           }
-
-
-
-                          if(quatities_of_skill2_for_character1>=1){
-                            is_ingradient_of_skill2_from_character1_actived[quatities_of_skill2_for_character1-1]=true;
-                          }
-
+                          set_skill2_of_character1(choose_right_1,choose_left_1);
+                          Is_skill2_from_character1_actived=true;
+                           time_watting_of_skill2_from_character1=30;
+                          can_character1_run_after_using_skill2=false;
 
                         }
                         break;
                    case SDLK_3 :
-                        if(time_watting_of_skill3_from_character1==0){
+                        if(time_watting_of_skill3_from_character1==0 && !(sprite_for_ch_get_dam_by_skill1_of_AI || sprite_for_ch_get_dam_by_skill2_of_AI|| sprite_for_ch_get_dam_by_skill3_of_AI) &&
+                           !delay_skill_of_player){
+                            delay_skill_of_player=true;
                           does_skill3_of_character1_active=true;
                           height_of_bone=0;
                         }
@@ -244,7 +241,7 @@ void eventloop(int &p){
            if(!game_over && !game_win){
 
 
-          SCREEN_FPS = 500;
+          SCREEN_FPS = 240;
           SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 
 
@@ -259,7 +256,7 @@ void eventloop(int &p){
             skill1_of_character1.render(&skill1_of_character1_clip[skill1_of_character1_frame/30]);
 
 
-           //*************************************************//
+           //***********************bonus for error sans************************//
 
 
            //set no effect active
@@ -290,7 +287,8 @@ void eventloop(int &p){
            if(does_skill1_of_ink_sans_active &&choose_skin2){
 
 
-           if(did_character2_get_hit_by_ink && health_bar_2_of_character2>0){
+           if(did_character2_get_hit_by_ink && health_bar_2_of_character2>0 && !Does_AI_use_skill3
+              && !does_AI_miss){
               losing_health_of_ch2=1;
               set_ch2_loses_health(health_bar_2_of_character2,health_bar_2_for_character2,losing_health_of_ch2,
                                       key_active_effect_of_losing_health2,tdx_character2,tdy_character2,
@@ -309,23 +307,31 @@ void eventloop(int &p){
 
 
 
-           //set character1 jump
 
-          set_chr1_jump(can_character1_jump,tdy_character1,tdy_of_ground,set_time_in_the_air_of_character1,v_of_character1,saving_time_jumping_when_stopping_game1,stopping_time);
+
+
+
+           /**************************************player*********************************/
+
+
+
+             //set character1 jump
+
+          set_chr1_jump(can_character1_jump,tdy_character1,tdy_of_ground,set_time_in_the_air_of_character1,v_of_character1,saving_time_jumping_when_stopping_game1,stopping_time,character_frame_jump);
 
 
            //set moving right and left for character 1
-           movingright(right_1,character1_frame,choose_right_1,time_run_of_character1,tdx_character1,saving_time_running_right_of_ch1);
+           movingright(right_1,character1_frame,choose_right_1,time_run_of_character1,tdx_character1,saving_time_running_right_of_ch1,
+                       can_character1_run_after_using_skill1);
 
-           movingleft(left_1,character1_frame,choose_left_1,time_run_of_character1,tdx_character1,saving_time_running_left_of_ch1);
+           movingleft(left_1,character1_frame,choose_left_1,time_run_of_character1,tdx_character1,saving_time_running_left_of_ch1,
+                      can_character1_run_after_using_skill1);
 
-
-
-
-           /*************************************************************************/
 
            character_1(tdx_character1,tdy_character1,character1_frame,choose_right_1,choose_left_1,choose_skin1,
-                       choose_skin2);
+                       choose_skin2,can_character1_jump,tdy_of_ground,sprite_for_ch_get_dam_by_skill1_of_AI,
+                       sprite_for_ch_get_dam_by_skill2_of_AI,sprite_for_ch_get_dam_by_skill3_of_AI,can_character1_run_after_using_skill1,
+                       can_character1_run_after_using_skill2,can_character1_run_after_using_skill3);
 
 
 
@@ -334,24 +340,37 @@ void eventloop(int &p){
                                     choose_skin1,choose_skin2);
 
 
+
+
               // set skill1 of character 1 appearing and making damage on AI
         if(does_skill1_of_character1_active){
            set_skill1_of_character1_active(tdy_character2,tdx_beam,tdx_skill1_of_character1,
                                            tdy_skill1_of_character1,height_of_beam,width_of_beam,tdy_beam,
                                            time_watting_for_skill1_of_character1,did_character2_get_hit_by_skill1,stopping_time,
-                                           skill1_of_character1,effect_for_skill1_of_character1,skill1_of_character1_frame);
+                                           skill1_of_character1,effect_for_skill1_of_character1,skill1_of_character1_frame,
+                                           character_frame_use_skill1,can_character1_run_after_using_skill1,
+                                           delay_skill_of_player);
 
 
-           if(did_character2_get_hit_by_skill1 && health_bar_2_of_character2>0){
+           if(did_character2_get_hit_by_skill1 && health_bar_2_of_character2>0 && !Does_AI_use_skill3
+              && !does_AI_miss && !Does_AI_use_skill2){
               losing_health_of_ch2=1;
               set_ch2_loses_health(health_bar_2_of_character2,health_bar_2_for_character2,losing_health_of_ch2,
                                       key_active_effect_of_losing_health2,tdx_character2,tdy_character2,
                                       did_character2_get_hit_by_skill1,tdx_health_bar_2_of_character2,stopping_time);
+              is_AI_hit_by_skill1_of_Player=true;
+
+
+
+
+
            }
            else{
                 did_character2_get_hit_by_skill1=false;
                losing_health_of_ch2=0;
                key_active_effect_of_losing_health2=false;
+               is_AI_hit_by_skill1_of_Player=false;
+
            }
         }
          else{
@@ -359,17 +378,111 @@ void eventloop(int &p){
          height_of_beam=0;
          width_of_beam=0;
          skill1_of_character1_frame=0;
+          is_AI_hit_by_skill1_of_Player=false;
+
        }
 
 
-           /**************************************************************************/
+
+
+
+        // set skill2 of character 1 appearing and making damage on AI
+
+
+                  set_skill2_of_character1_actived(tdx_for_ingradient_of_skill2_character1,
+                                                   tdy_for_ingradient_of_skill2_character1,
+                                                   Is_skill2_from_character1_actived,
+                                                   time_watting_of_skill2_from_character1,
+                                                   did_character2_get_hit_by_skill2,quatities_of_bone,stopping_time,
+                                                   character_frame_use_skill2,can_character1_run_after_using_skill2);
+
+
+            for(int i=0;i<quatities_of_bone;i++){
+
+                   if(did_character2_get_hit_by_skill2[i] && health_bar_2_of_character2>0 && !Does_AI_use_skill3
+                      && !Does_AI_use_skill2 && !does_AI_miss){
+                        losing_health_of_ch2=5;
+                        set_ch2_loses_health(health_bar_2_of_character2,health_bar_2_for_character2,losing_health_of_ch2,
+                                      key_active_effect_of_losing_health2,tdx_character2,tdy_character2,
+                                      did_character2_get_hit_by_skill2[i],tdx_health_bar_2_of_character2,stopping_time);
+                         is_AI_hit_by_skill2_of_Player=true;
+
+
+
+                    }
+                    else{
+                        did_character2_get_hit_by_skill2[i]=false;
+                        losing_health_of_ch2=0;
+                        key_active_effect_of_losing_health2=false;
+                        is_AI_hit_by_skill2_of_Player=false;
+
+                    }
+
+
+            }
+
+
+
+
+
+
+            //set skill 3 for character1 and cause damage on AI
+
+
+            set_skill3_of_ch1_active(does_skill3_of_character1_active,time_watting_of_skill3_from_character1,
+                                    tdx_character2,tdy_character2, height_of_bone,
+                                    character2_can_not_move,time_appearing_of_skill3_from_character1,
+                                    skill3_of_character1,did_character2_get_hit_by_skill3,stopping_time,
+                                    character_frame_use_skill3,can_character1_run_after_using_skill3,delay_skill_of_player);
+          if(does_skill3_of_character1_active){
+            if(did_character2_get_hit_by_skill3 && health_bar_2_of_character2>0 && !Does_AI_use_skill3 && !Does_AI_use_skill2 && !does_AI_miss){
+                 losing_health_of_ch2=1;
+                 set_ch2_loses_health(health_bar_2_of_character2,health_bar_2_for_character2,losing_health_of_ch2,
+                                      key_active_effect_of_losing_health2,tdx_character2,tdy_character2,
+                                      did_character2_get_hit_by_skill3,tdx_health_bar_2_of_character2,stopping_time);
+
+                        is_AI_hit_by_skill3_of_Player=true;
+
+
+
+              }
+
+          }
+          else{
+             is_AI_hit_by_skill3_of_Player=false;
+             did_character2_get_hit_by_skill3=false;
+             key_active_effect_of_losing_health2=false;
+             losing_health_of_ch2=0;
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /************************************AI************************************/
+
+
+
 
 
 
            // set AI moving and hit player when he/she stands near AI
            set_AI_move(tdx_character1, tdy_character1,character2_can_not_move,right_AI,left_AI,
                        tdx_character2,tdy_character2,time_in_game,start_time,width_of_screen,character2_frame,
-                       time_appearing_of_skill1_from_AI,did_character1_get_hit,saving_time_running_of_AI,stopping_time,saving_time_skill1_of_AI);
+                       time_appearing_of_skill1_from_AI,did_character1_get_hit,saving_time_running_of_AI,stopping_time,saving_time_skill1_of_AI,
+                       Does_AI_use_skill3,does_AI_miss);
 
 
       if(tdx_character2-tdx_character1<=30 && tdx_character2-tdx_character1>=-30 && tdy_character2 == tdy_character1){
@@ -384,146 +497,163 @@ void eventloop(int &p){
                     key_active_no_effect_ability=true;
                 }
 
+                sprite_for_ch_get_dam_by_skill1_of_AI=true;
+                character_frame_get_dam++;
+                if(character_frame_get_dam/5>=2){
+                   character_frame_get_dam=0;
+                }
+
               }
               else{
                   losing_health_of_ch1=0;
                   key_active_effect_of_losing_health1=false;
+                  character_frame_get_dam=0;
+                  sprite_for_ch_get_dam_by_skill1_of_AI=false;
 
               }
 
 
 
               // set AI skill1 appear
+            if(!delay_skill_of_AI && !(is_AI_hit_by_skill1_of_Player || is_AI_hit_by_skill2_of_Player || is_AI_hit_by_skill3_of_Player)){
              AI_skill1((SDL_GetTicks()-time_in_game-time_appearing_of_skill1_from_AI+saving_time_skill1_of_AI)/200,skill1_of_AI,character1,
                        skill1_of_AI_clip,time_appearing_of_skill1_from_AI,saving_time_skill1_of_AI,time_in_game);
-
-
-      }
-
-
-
-
-
-
-
-
-
-
-
-
-        // set skill2 of character 1 appearing and making damage on AI
-
-
-                  set_skill2_of_character1_actived(quatities_of_skill2_for_character1,tdx_for_ingradient_of_skill2_character1,
-                                                   tdy_for_ingradient_of_skill2_character1,
-                                                   is_ingradient_of_skill2_from_character1_actived,
-                                                   time_watting_of_skill2_from_character1,
-                                                   did_character2_get_hit_by_skill2,quatities_of_bone,stopping_time);
-
-
-            for(int i=0;i<quatities_of_skill2_for_character1;i++){
-
-                   if(did_character2_get_hit_by_skill2[i] && health_bar_2_of_character2>0){
-                        losing_health_of_ch2=10;
-                        set_ch2_loses_health(health_bar_2_of_character2,health_bar_2_for_character2,losing_health_of_ch2,
-                                      key_active_effect_of_losing_health2,tdx_character2,tdy_character2,
-                                      did_character2_get_hit_by_skill2[i],tdx_health_bar_2_of_character2,stopping_time);
-                    }
-                    else{
-                        did_character2_get_hit_by_skill2[i]=false;
-                        losing_health_of_ch2=0;
-                        key_active_effect_of_losing_health2=false;
-                    }
-
-
             }
 
 
+      }
+       else{
+                  losing_health_of_ch1=0;
+                  key_active_effect_of_losing_health1=false;
+                  character_frame_get_dam=0;
+                  sprite_for_ch_get_dam_by_skill1_of_AI=false;
 
-
-
-
-        // set AI dodge and jump skill2 and skill1
-
-              set_AI_dodge(quatities_of_bone,is_ingradient_of_skill2_from_character1_actived,
-                  tdx_character2,tdx_character1,tdx_for_ingradient_of_skill2_character1,chance_to_jump_of_AI,
-                  can_character2_jump,set_time_in_the_air_of_character2,tdy_character2,
-                  tdy_of_ground,v_of_character2,does_skill1_of_character1_active,chance_to_teleport,time_watting_teleport,
-                  character2_can_not_move,key_active_effect_miss,saving_time_jumping_when_stopping_game2,stopping_time);
-
-             set_effect_miss(key_active_effect_miss,time_appearing_of_effect_miss,saving_time_miss_effect_of_AI);
-
-
-
-
-
-
-//*************************************************************//
-
-
-            //set skill 3 for character1 and cause damage on AI
-
-
-            set_skill3_of_ch1_active(does_skill3_of_character1_active,time_watting_of_skill3_from_character1,
-                                    tdx_character2,tdy_character2, height_of_bone,
-                                    character2_can_not_move,time_appearing_of_skill3_from_character1,
-                                    skill3_of_character1,did_character2_get_hit_by_skill3,stopping_time);
-          if(does_skill3_of_character1_active){
-            if(did_character2_get_hit_by_skill3 && health_bar_2_of_character2>0){
-                 losing_health_of_ch2=1;
-                 set_ch2_loses_health(health_bar_2_of_character2,health_bar_2_for_character2,losing_health_of_ch2,
-                                      key_active_effect_of_losing_health2,tdx_character2,tdy_character2,
-                                      did_character2_get_hit_by_skill3,tdx_health_bar_2_of_character2,stopping_time);
-              }
-              else{
-                  did_character2_get_hit_by_skill3=false;
-                  key_active_effect_of_losing_health2=false;
-                  losing_health_of_ch2=0;
-              }
-          }
-
+    }
 
 
          // set skill2_of_AI_actived
 
 
-         set_skill2_of_AI_active(right_AI,left_AI,character1,character2,time_watting_for_skill2_of_AI,
-                               is_skill2_of_character2_actived, tdx_character2, tdy_character2,
+    if(!delay_skill_of_AI && !(is_AI_hit_by_skill1_of_Player || is_AI_hit_by_skill2_of_Player || is_AI_hit_by_skill3_of_Player)
+       && !Does_AI_use_skill3 && !does_AI_miss){
+        set_skill2_of_AI_active(right_AI,left_AI,character1,character2,time_watting_for_skill2_of_AI,
+                               Is_skill2_of_character2_actived, tdx_character2, tdy_character2,
                                tdx_of_skill2_character2,tdy_of_skill2_character2,
                                left_for_skill2_of_character2,right_for_skill2_of_character2,
-                               tdx_character1,tdx_character1,stopping_time);
+                               tdx_character1,tdy_character1,stopping_time,Does_AI_use_skill2,character2_frame_skill2,
+                               delay_skill_of_AI);
+    }
 
-            if(is_skill2_of_character2_actived){
+
+
+  if(Is_skill2_of_character2_actived){
+
+
+
+    character2_frame_skill2++;
+    if(character2_frame_skill2/5>=7){
+      character2_frame_skill2=35;
+      Does_AI_use_skill2=false;
+
+    }
+
+
+        if(character2_frame_skill2>=22 ){
+
              skill2_active(tdx_of_skill2_character2,tdy_of_skill2_character2,right_for_skill2_of_character2,
-                           left_for_skill2_of_character2,tdx_character1,tdy_character1,did_character1_get_hit,stopping_time);
-          }
+                           left_for_skill2_of_character2,tdx_character1,tdy_character1,did_character1_get_hit,stopping_time,
+                           Does_AI_use_skill2,character2_frame_skill2);
 
 
-             // heal_bar_of_character1_is_damaged_by_skill2_of_AI
-           if(is_skill2_of_character2_actived){
+              // heal_bar_of_character1_is_damaged_by_skill2_of_AI
 
-             if(did_character1_get_hit && health_bar_2_of_character1 >0 ){
+            if(did_character1_get_hit && health_bar_2_of_character1 >0 ){
 
                 if( !chance_to_use_no_effect_ability){
-                 losing_health_of_ch1=50;
-
+                 losing_health_of_ch1=25;
+                 time_watting_for_skill2_of_AI=100;
                  set_ch1_loses_health(health_bar_2_of_character1,health_bar_2_for_character1,losing_health_of_ch1,
                                       key_active_effect_of_losing_health1,tdx_character1,tdy_character1,did_character1_get_hit,
                                       stopping_time);
-                 is_skill2_of_character2_actived=false;
-                 time_watting_for_skill2_of_AI=100;
+
                 }
                 else{
                     key_active_no_effect_ability=true;
                 }
 
+                sprite_for_ch_get_dam_by_skill2_of_AI=true;
+                character_frame_get_dam++;
+                if(character_frame_get_dam/5>=2){
+                   character_frame_get_dam=0;
+                }
+
+
+
+
               }
               else{
                   losing_health_of_ch1=0;
                   key_active_effect_of_losing_health1=false;
+                  character_frame_get_dam=0;
+                  sprite_for_ch_get_dam_by_skill2_of_AI=false;
 
               }
+
+
+
+                   skill2_of_AI_frame++;
+                   if(skill2_of_AI_frame/5>=4){
+                      skill2_of_AI_frame=15;
+                   }
+
+
+            }
+        }
+          else{
+              skill2_of_AI_frame=0;
+              Does_AI_use_skill2=false;
+              character2_frame_skill2=0;
+              losing_health_of_ch1=0;
+              key_active_effect_of_losing_health1=false;
+              character_frame_get_dam=0;
+              sprite_for_ch_get_dam_by_skill2_of_AI=false;
+
+          }
+
+
+
+
+
+    if(!Is_skill2_of_character2_actived){
+          time_watting_for_skill2_of_AI--;
+           if(time_watting_for_skill2_of_AI<0){
+              time_watting_for_skill2_of_AI=0;
            }
+    }
+
+
+
+
+
+          //set AI frame jump active
+          if((can_character2_jump || tdy_character2 < tdy_of_ground) && !Does_AI_use_skill3){
+            character2_frame_jump++;
+            if(character2_frame_jump/10>=7){
+                character2_frame_jump=60;
+            }
+
+          }
+          else{
+             character2_frame_jump=0;
+          }
+
+
+
+
+
+
+
+
 
 
 
@@ -532,7 +662,8 @@ void eventloop(int &p){
 
           // set skill3 of Ai active
           set_skill3_of_AI_active(time_in_game,did_character1_get_hit_by_skill3,tdx_character1,tdy_character1,
-                                          saving_time_effect_of_skill3_of_AI,time_appearing_of_effect_of_skill3_from_AI);
+                                          saving_time_effect_of_skill3_of_AI,time_appearing_of_effect_of_skill3_from_AI,
+                                          AI_use_skilll3_frame,Does_AI_use_skill3,Does_AI_use_skill2,does_AI_miss);
           // set skill3 of AI make damage on player
 
           // first damage
@@ -549,9 +680,17 @@ void eventloop(int &p){
                  key_active_no_effect_ability=true;
              }
 
+                sprite_for_ch_get_dam_by_skill3_of_AI=true;
+                character_frame_get_dam++;
+                if(character_frame_get_dam/5>=2){
+                   character_frame_get_dam=0;
+                }
+
               }
               else{
                   key_active_effect_of_losing_health1=false;
+                  character_frame_get_dam=0;
+                  sprite_for_ch_get_dam_by_skill3_of_AI=false;
               }
 
 
@@ -568,21 +707,84 @@ void eventloop(int &p){
              else{
                  key_active_no_effect_ability=true;
              }
+
+             sprite_for_ch_get_dam_by_skill3_of_AI=true;
+             character_frame_get_dam++;
+                if(character_frame_get_dam/5>=2){
+                   character_frame_get_dam=0;
+                }
           }
-          else{ key_active_effect_of_losing_health1=false;}
+          else{
+            character_frame_get_dam=0;
+            key_active_effect_of_losing_health1=false;
+            sprite_for_ch_get_dam_by_skill3_of_AI=false;
+          }
+
+
+
+
+
+
+          // set AI dodge and jump skill2 and skill1
+
+              set_AI_dodge(quatities_of_bone,Is_skill2_from_character1_actived,
+                  tdx_character2,tdx_character1,tdx_for_ingradient_of_skill2_character1,chance_to_jump_of_AI,
+                  can_character2_jump,set_time_in_the_air_of_character2,tdy_character2,
+                  tdy_of_ground,v_of_character2,does_skill1_of_character1_active,chance_to_teleport,time_watting_teleport,
+                  character2_can_not_move,key_active_effect_miss,saving_time_jumping_when_stopping_game2,stopping_time,does_AI_miss,
+                  Does_AI_use_skill2,tdx_beam,tdy_beam,width_of_beam,height_of_beam,tdx_beam_of_ink_gb,tdy_beam_of_ink_gb,width_of_beam_from_ink_gb,height_of_beam_from_ink_gb,
+                  time_in_game,saving_time_when_stopping_game,does_skill1_of_ink_sans_active,
+                  is_AI_hit_by_skill1_of_Player,is_AI_hit_by_skill2_of_Player,is_AI_hit_by_skill3_of_Player,Does_AI_use_skill3);
+
+
+
+             set_effect_miss(key_active_effect_miss,time_appearing_of_effect_miss,saving_time_miss_effect_of_AI);
+
+
+
+
 
 
 
           //set effect miss for AI
           set_effect_miss_active(key_active_effect_miss,chance_to_teleport,time_appearing_of_effect_miss,time_watting_teleport,
-                                 effect_miss_of_AI,stopping_time);
+                                 effect_miss_of_AI,stopping_time,character2_frame_miss,delay_skill_of_AI,tdx_character2,tdx_character1,
+                                 does_AI_miss,character2_can_not_move);
 
-          //
+         AI(tdx_character2,tdy_character2,character2_frame,right_AI,left_AI,can_character2_jump,tdy_of_ground);
+
+
+        //set sprite for AI when he/she is damaged
+            if((is_AI_hit_by_skill1_of_Player || is_AI_hit_by_skill2_of_Player || is_AI_hit_by_skill3_of_Player)
+               && !Does_AI_use_skill2 && !Does_AI_use_skill3 && !delay_skill_of_AI){
+                        AI_get_hit_frame++;
+                        if(AI_get_hit_frame/5>=3){
+                            AI_get_hit_frame=0;
+                        }
+            }
+            else{
+                AI_get_hit_frame=0;
+            }
+
+        //set AI jump to follow player
+        if(abs(tdx_character1-tdx_character2)<5 && tdy_character1<=tdy_character2-5){
+           if(tdy_character2<tdy_of_ground  && !stopping_time){
+                        tdy_character2=tdy_character2-set_gravity(v_of_character2,set_time_in_the_air_of_character2,saving_time_jumping_when_stopping_game2);
+                        if(tdy_character2>=tdy_of_ground){
+                            tdy_character2=tdy_of_ground;
+
+                         }
+
+                 }
+        }
+
+
+        /************************************game status*******************************************/
           set_health_bar_for_character1(health_bar_2_of_character1,choose_skin1,choose_skin2);
           set_health_bar_for_character2(health_bar_2_of_character2,tdx_health_bar_2_of_character2);
 
            //
-           AI(tdx_character2,tdy_character2,character2_frame,right_AI,left_AI);
+
            if(health_bar_2_of_character1<=0){
               game_over=true;
            }
@@ -661,13 +863,7 @@ void eventloop(int &p){
          //*************** set time wait or reset tdx,tdy *********************//
 
            //
-           time_watting_for_skill2_of_AI--;
-           if(time_watting_for_skill2_of_AI<0){
-              time_watting_for_skill2_of_AI=0;
-           }
-           if((character2_skill2.gettdx()<=0 || character2_skill2.gettdx()>=1080) && is_skill2_of_character2_actived ){
-             is_skill2_of_character2_actived=false;
-           }
+
 
            if(time_watting_of_skill3_from_character1>0){
               time_watting_of_skill3_from_character1--;
@@ -789,11 +985,11 @@ void eventloop(int &p){
                    health_bar_2_for_character2, character2_skill2, skill1_of_character1,
                   skill3_of_character1,choose_right_1,
                    choose_left_1, left_AI, right_AI, right_for_skill2_of_character2,
-                   left_for_skill2_of_character2, is_skill2_of_character2_actived,
+                   left_for_skill2_of_character2, Is_skill2_of_character2_actived,
                    is_ingradient_of_skill3_from_character2_actived, skill3_of_character2,
                    is_effect_for_ingrident_of_skill3_of_AI_actived, effect_for_skill3_of_character2,
                    does_skill1_of_character1_active, effect_for_skill1_of_character1,
-                   is_ingradient_of_skill2_from_character1_actived, skill2_of_character1,
+                   Is_skill2_from_character1_actived, skill2_of_character1,
                    does_skill3_of_character1_active,skill1_of_character1_frame,skill1_of_character1_clip,
                     choose_skin1, choose_skin2,anti_void,anti_void_clip,anti_void_frame,does_anti_void_appear,
                     ink_sans,ink_sans_clip,ink_sans_frame,skill1_of_ink,skill1_of_ink_clip,skill1_of_ink_frame,

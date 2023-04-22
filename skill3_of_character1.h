@@ -52,7 +52,9 @@ void set_skill3_of_character1(int tdx_character2, int &time_appearing_of_skill3_
 void set_skill3_of_ch1_active(bool &does_skill3_of_character1_active,int &time_watting_of_skill3_from_character1,
                               int tdx_character2,int tdy_character2,int &height_of_bone,
                               bool &character2_can_not_move,int &time_appearing_of_skill3_from_character1,
-                              Ltexture skill3_of_character1,bool &did_character2_get_hit_by_skill3,bool stopping_time){
+                              Ltexture skill3_of_character1,bool &did_character2_get_hit_by_skill3,bool stopping_time,
+                              int &character_frame_use_skill3,bool &can_character1_run_after_using_skill3,
+                              bool &delay_skill_of_player){
 
      if(does_skill3_of_character1_active ){
 
@@ -75,6 +77,19 @@ void set_skill3_of_ch1_active(bool &does_skill3_of_character1_active,int &time_w
               }
 
 
+            if(!stopping_time){
+              character_frame_use_skill3++;
+              if(character_frame_use_skill3/5>=4){
+                 can_character1_run_after_using_skill3=true;
+                 character_frame_use_skill2=15;
+                 delay_skill_of_player=false;
+              }
+              else{
+                  can_character1_run_after_using_skill3=false;
+
+              }
+            }
+
 
 
 
@@ -82,6 +97,7 @@ void set_skill3_of_ch1_active(bool &does_skill3_of_character1_active,int &time_w
               else{
                   character2_can_not_move=false;
                   did_character2_get_hit_by_skill3=false;
+                  character_frame_use_skill3=0;
               }
 
 }

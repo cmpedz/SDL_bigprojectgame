@@ -15,7 +15,7 @@ void set_everything_in_game_stop(Ltexture character1,Ltexture character2,Ltextur
                   bool is_ingradient_of_skill3_from_character2_actived[],Ltexture skill3_of_character2[],
                   bool is_effect_for_ingrident_of_skill3_of_AI_actived[],Ltexture effect_for_skill3_of_character2[],
                   bool does_skill1_of_character1_active,Ltexture effect_for_skill1_of_character1,
-                  bool is_ingradient_of_skill2_from_character1_actived[],Ltexture skill2_of_character1[],
+                  bool is_ingradient_of_skill2_from_character1_actived,Ltexture skill2_of_character1[],
                   bool does_skill3_of_character1_active,int skill1_of_character1_frame,
                   SDL_Rect skill1_of_character1_clip[],bool choose_skin1,bool choose_skin2,
                   Ltexture anti_void,SDL_Rect anti_void_clip[],int anti_void_frame,bool does_anti_void_appear,
@@ -189,13 +189,13 @@ void set_everything_in_game_stop(Ltexture character1,Ltexture character2,Ltextur
 
       }
 
+    if(is_ingradient_of_skill2_from_character1_actived){
+      for(int i=0;i<quatities_of_bone;i++){
 
-      for(int i=0;i<quatities_of_skill2_for_character1;i++){
 
-            if(is_ingradient_of_skill2_from_character1_actived[i]){
                 skill2_of_character1[i].settdx(tdx_for_ingradient_of_skill2_character1[i]);
                 skill2_of_character1[i].settdy(tdy_for_ingradient_of_skill2_character1[i]);
-                skill2_of_character1[i].render(NULL);
+                 skill2_of_character1[i].render(&quatities_of_bone_clip[quatities_of_bone_frame/5]);
 
             }
       }

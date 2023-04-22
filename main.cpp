@@ -43,6 +43,7 @@ using namespace std;
 
 int main(int arcg,char*argv[])
 { int point_of_player=0;
+  //SDL_OpenURL("https://www.youtube.com/");
   ifstream ip_point("point_of_player.txt");
   ip_point>>point_of_player;
   ofstream op_point("point_of_player.txt");
