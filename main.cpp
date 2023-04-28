@@ -4,6 +4,7 @@
 using namespace std;
 #include<SDL.h>
 #include<SDL_ttf.h>
+#include<SDL_mixer.h>
 #include"../library/gravity.h"
 #include"../library/common function.h"
 #include"../library/loadmedia.h"
@@ -15,6 +16,7 @@ using namespace std;
 #include"../library/choice_menu.h"
 #include"../library/choose_skin_interface.h"
 #include"../library/choose_map.h"
+#include"../library/choose_level.h"
 #include"../library/tutorial_background.h"
 #include"../library/background.h"
 #include"../library/time_watting_skill_of_player_icon.h"
@@ -42,14 +44,22 @@ using namespace std;
 #define LEFT 2
 
 int main(int arcg,char*argv[])
-{ int point_of_player=0;
+{ int level_of_player=0;
+  //SDL_OpenURL("https://www.youtube.com/");
   ifstream ip_point("point_of_player.txt");
-  ip_point>>point_of_player;
+  ip_point>>level_of_player;
   ofstream op_point("point_of_player.txt");
-  eventloop(point_of_player);
+  eventloop(level_of_player);
   close();
-  op_point<<point_of_player;
-  cout<<point_of_player<<endl;
+  free_music_in_menu_game();
+  free_music_in_game();
+  free_music_game_over();
+  free_music_game_win();
+  free_music_taken_dam();
+  free_music_slash();
+  free_music_exploding();
+  op_point<<level_of_player;
+  cout<<level_of_player<<endl;
 
   cout<<"thanks for playing"<<endl;
 

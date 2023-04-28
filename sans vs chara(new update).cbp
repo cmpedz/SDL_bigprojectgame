@@ -31,12 +31,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/SDL_tff/include/SDL2" />
-			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/SDL.h/include/SDL2" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/SDL_bigprojectgame-SDL_bigprojectgame_new_update_0.7/sdl_lib/SDL.h/include/SDL2" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/SDL_bigprojectgame-SDL_bigprojectgame_new_update_0.7/sdl_lib/SDL_tff/include/SDL2" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/SDL_bigprojectgame-SDL_bigprojectgame_new_update_0.7/sdl_lib/SDL_mix/include/SDL2" />
 		</Compiler>
 		<Linker>
-			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/SDL_tff/lib" />
-			<Add directory="C:/Users/Admin/Desktop/bách khoa/sans vs chara/sdl libr/SDL.h/lib" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/SDL_bigprojectgame-SDL_bigprojectgame_new_update_0.7/sdl_lib/SDL.h/lib" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/SDL_bigprojectgame-SDL_bigprojectgame_new_update_0.7/sdl_lib/SDL_tff/lib" />
+			<Add directory="C:/Users/Admin/Desktop/bách khoa/SDL_bigprojectgame-SDL_bigprojectgame_new_update_0.7/sdl_lib/SDL_mix/lib" />
 		</Linker>
 		<Unit filename="library/AI_moving.h" />
 		<Unit filename="library/background.h" />
@@ -46,6 +48,7 @@
 		<Unit filename="library/character2_skill2.h" />
 		<Unit filename="library/character2_skill3.h" />
 		<Unit filename="library/choice_menu.h" />
+		<Unit filename="library/choose_level.h" />
 		<Unit filename="library/choose_map.h" />
 		<Unit filename="library/choose_skin_interface.h" />
 		<Unit filename="library/common function.h" />

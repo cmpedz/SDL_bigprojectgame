@@ -193,7 +193,11 @@ void set_skill1_of_ink_sans_active(int tdx_character2,int tdy_character2,int &td
                                      bool &did_character2_get_hit,bool stopping_time,int &skill1_of_ink_frame){
        if(!stopping_time) {height_of_beam_from_ink_gb=height_of_beam_from_ink_gb-tdy_character2+tdy_of_ground;}
        if(does_skill1_of_ink_sans_active){
+          if(time_watting_for_skill1_of_ink_sans==0){
+             Mix_PlayChannel( 2, music_gb, 0 );
+          }
           time_watting_for_skill1_of_ink_sans=30;
+
           if(skill1_of_ink_frame/30>=3){
              skill1_of_ink_frame=0;
              does_skill1_of_ink_sans_active=false;

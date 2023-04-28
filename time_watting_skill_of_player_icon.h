@@ -88,7 +88,7 @@ void set_icon_skill_of_player(){
 
 }
 
-void set_icon_appear_and_active(int mtime_watting_for_skill1_of_character1,
+void set_icon_skill_appear_and_active(int mtime_watting_for_skill1_of_character1,
                                 int mtime_watting_of_skill2_from_character1,
                                 int mtime_watting_of_skill3_from_character1,
                                 int mtime_watting_teleport,

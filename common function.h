@@ -20,17 +20,21 @@ const int tdy_of_ground=height_of_screen/4*3;
 
 bool init(){
      bool success=true;
-     if(SDL_Init(SDL_INIT_VIDEO)<0){
-        cout<<"failed to load SDL"<<endl;
-        success=false;
-     }
+      //Initialize SDL
+    if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO  ) < 0 )
+    {
+        printf( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
+        success = false;
+    }
      else{
 
           if( !SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ) )
 		{
 			printf( "Warning: Linear texture filtering not enabled!" );
 		}
-         window=SDL_CreateWindow("sans vs chara new update",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,width_of_screen,height_of_screen,SDL_WINDOW_SHOWN);
+
+
+         window=SDL_CreateWindow(" Sans vs Chara (by cmpedz) ",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,width_of_screen,height_of_screen,SDL_WINDOW_SHOWN);
          if(window==NULL){
             cout<<"failed to load window"<<endl;
             success=false;
@@ -43,6 +47,13 @@ bool init(){
 					success = false;
 				}
 
+				 //Initialize SDL_mixer
+                if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 )
+                {
+                    printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+                    success = false;
+                }
+
          }
      }
      return success;
@@ -54,6 +65,7 @@ void close(){
      SDL_DestroyWindow(window);
      window=NULL;
      SDL_Quit();
+     Mix_Quit();
 }
 
 void free_memory_about_time(){

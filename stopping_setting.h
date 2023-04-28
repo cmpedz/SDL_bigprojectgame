@@ -15,7 +15,7 @@ void set_everything_in_game_stop(Ltexture character1,Ltexture character2,Ltextur
                   bool is_ingradient_of_skill3_from_character2_actived[],Ltexture skill3_of_character2[],
                   bool is_effect_for_ingrident_of_skill3_of_AI_actived[],Ltexture effect_for_skill3_of_character2[],
                   bool does_skill1_of_character1_active,Ltexture effect_for_skill1_of_character1,
-                  bool is_ingradient_of_skill2_from_character1_actived[],Ltexture skill2_of_character1[],
+                  bool is_ingradient_of_skill2_from_character1_actived,Ltexture skill2_of_character1[],
                   bool does_skill3_of_character1_active,int skill1_of_character1_frame,
                   SDL_Rect skill1_of_character1_clip[],bool choose_skin1,bool choose_skin2,
                   Ltexture anti_void,SDL_Rect anti_void_clip[],int anti_void_frame,bool does_anti_void_appear,
@@ -38,43 +38,268 @@ void set_everything_in_game_stop(Ltexture character1,Ltexture character2,Ltextur
          }
 
 
+          // set everything in game stop when we pause game
 
-        if(choose_skin1){
-            if(choose_right_1){
-
-                character1.loadtexture("image/sans_moving_right.bmp");
-
-            }
-            if(choose_left_1){
-
-                character1.loadtexture("image/sans_moving_left.bmp");
-            }
-
-             character1_face.loadtexture("image/sans_face.bmp");
+            background.render(NULL);
 
 
-            skill1_of_character1.loadtexture("image/gb.bmp");
+
+         if(choose_skin1){
+
+
+
+
+
+
+
+        character1.settdx(tdx_character1);
+        character1.settdy(tdy_character1);
+        character1.setheight(60); //60
+        character1.setwidth(36);  //36
+        character1.loadtexture("image/dust_sans_mvr.bmp");
+        character1_face.loadtexture("image/sans_face.bmp");
+          skill1_of_character1.loadtexture("image/gb.bmp");
             effect_for_skill1_of_character1.loadtexture("image/gb_beam.bmp");
 
              skill3_of_character1.loadtexture("image/sans_bone_zone.bmp");
+
+        //set sprite for charater jump
+        if((can_character1_jump || tdy_character1 < tdy_of_ground) && !(sprite_for_ch_get_dam_by_skill1_of_AI || sprite_for_ch_get_dam_by_skill2_of_AI
+            || sprite_for_ch_get_dam_by_skill3_of_AI) && can_character1_run_after_using_skill1 &&
+           can_character1_run_after_using_skill2 && can_character1_run_after_using_skill3){
+
+
+            if(choose_right_1){
+
+
+
+                 character1.loadtexture("image/dust_sans_jump_r.bmp");
+            }
+
+
+            if(choose_left_1){
+
+
+                 character1.loadtexture("image/dust_sans_jump_l.bmp");
+            }
+
+
+             character1.render(&character1_clip[character_frame_jump/10]);
+
+        }
+
+        else{
+
+
+        //set sprite for ch mv right or left
+
+        if(!(sprite_for_ch_get_dam_by_skill1_of_AI || sprite_for_ch_get_dam_by_skill2_of_AI || sprite_for_ch_get_dam_by_skill3_of_AI) &&
+           can_character1_run_after_using_skill1 && can_character1_run_after_using_skill2 && can_character1_run_after_using_skill3){
+        if(choose_right_1){
+
+
+
+           character1.loadtexture("image/dust_sans_mvr.bmp");
+
+        }
+        if(choose_left_1){
+
+
+
+
+          character1.loadtexture("image/dust_sans_mvl.bmp");
+        }
+
+
+         character1.render(&character1_clip[character1_frame/5]);
+
+
+
         }
 
 
 
 
-        if(choose_skin2){
+        else{
+
+
+        //set sprite when character is damaged
+        if(can_character1_run_after_using_skill1 && can_character1_run_after_using_skill2
+           && can_character1_run_after_using_skill3){
+        character1.setheight(60);
+        character1.setwidth(48);
+
+        if(choose_right_1){
+
+
+
+          character1.loadtexture("image/dust_sans_is_damaged_r.bmp");
+
+          character1.render(&character1_clip[character_frame_get_dam/5]);
+        }
+
+         if(choose_left_1){
+
+          character1.loadtexture("image/dust_sans_is_damaged_l.bmp");
+
+          character1.render(&character1_clip[character_frame_get_dam/5]);
+        }
+
+
+
+        }
+
+
+
+
+
+        else{
+
+            if(can_character1_run_after_using_skill2 && can_character1_run_after_using_skill3){
+
+             //set sprite for ch when player use skill1
             if(choose_right_1){
 
-                character1.loadtexture("image/error_sans_mvr.bmp");
+                character1.loadtexture("image/dust_sans_use_skill1_r.bmp");
 
             }
-            if(choose_left_1){
 
-                character1.loadtexture("image/error_sans_mvl.bmp");
+
+             if(choose_left_1){
+
+                character1.loadtexture("image/dust_sans_use_skill1_l.bmp");
+
+
+
             }
 
-             character1_face.loadtexture("image/error_sans_face.bmp");
-            skill1_of_character1.loadtexture("image/error_blaster.bmp");
+            if(character_frame_use_skill1/5==2){
+                character1.setheight(60);
+                character1.setwidth(58);
+
+            }
+
+            character1.render(&character1_clip[character_frame_use_skill1/5]);
+
+
+
+        }
+
+        else{
+
+
+        if(can_character1_run_after_using_skill3){
+
+             //set sprite for ch when player use skill2
+             if(choose_right_1){
+
+                character1.loadtexture("image/dust_sans_use_skill2_r.bmp");
+             }
+
+              if(choose_left_1){
+
+                character1.loadtexture("image/dust_sans_use_skill2_l.bmp");
+             }
+
+                if(character_frame_use_skill2/5>=1 && character_frame_use_skill2/5<2){
+                    character1.setheight(55);
+                   character1.setwidth(53);
+
+                }
+                character1.render(&character1_clip[character_frame_use_skill2/5]);
+
+        }
+
+        else{
+             //set sprite for ch when player use skill3
+              if(choose_right_1){
+
+
+                character1.loadtexture("image/dust_sans_use_skill3_r.bmp");
+             }
+
+             if(choose_left_1){
+
+                character1.loadtexture("image/dust_sans_use_skill3_l.bmp");
+             }
+
+
+
+             character1.render(&character1_clip[character_frame_use_skill3/5]);
+
+
+
+        }
+
+
+
+
+        }
+
+
+
+        }
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if(choose_skin2){
+
+
+
+
+
+
+
+        character1.settdx(tdx_character1);
+        character1.settdy(tdy_character1);
+        character1.setheight(60); //60
+        character1.setwidth(36);  //36
+        character1.loadtexture("image/error_sans_mvr.bmp");
+        character1_face.loadtexture("image/error_sans_face.bmp");
+
+         skill1_of_character1.loadtexture("image/error_blaster.bmp");
             effect_for_skill1_of_character1.loadtexture("image/error_gb_beam.bmp");
 
             skill1_of_ink.loadtexture("image/ink_sans_gb.bmp");
@@ -91,6 +316,48 @@ void set_everything_in_game_stop(Ltexture character1,Ltexture character2,Ltextur
             }
 
 
+        //set sprite for charater jump
+        if((can_character1_jump || tdy_character1 < tdy_of_ground) && !(sprite_for_ch_get_dam_by_skill1_of_AI || sprite_for_ch_get_dam_by_skill2_of_AI
+            || sprite_for_ch_get_dam_by_skill3_of_AI) && can_character1_run_after_using_skill1 &&
+           can_character1_run_after_using_skill2 && can_character1_run_after_using_skill3){
+
+
+            if(choose_right_1){
+
+                 character1.loadtexture("image/error_sans_jump_r.bmp");
+            }
+
+
+            if(choose_left_1){
+
+                 character1.loadtexture("image/error_sans_jump_l.bmp");
+            }
+
+
+             character1.render(&character1_clip[character_frame_jump/10]);
+
+        }
+
+        else{
+
+
+        //set sprite for ch mv right or left
+
+        if(!(sprite_for_ch_get_dam_by_skill1_of_AI || sprite_for_ch_get_dam_by_skill2_of_AI || sprite_for_ch_get_dam_by_skill3_of_AI) &&
+           can_character1_run_after_using_skill1 && can_character1_run_after_using_skill2 && can_character1_run_after_using_skill3){
+        if(choose_right_1){
+
+           character1.loadtexture("image/error_sans_mvr.bmp");
+
+        }
+        if(choose_left_1){
+
+
+          character1.loadtexture("image/error_sans_mvl.bmp");
+        }
+
+
+         character1.render(&character1_clip[character1_frame/5]);
 
 
 
@@ -99,18 +366,159 @@ void set_everything_in_game_stop(Ltexture character1,Ltexture character2,Ltextur
 
 
 
-            if(right_AI){
-                character2.loadtexture("image/chara_moving_right.bmp");
+        else{
+
+
+        //set sprite when character is damaged
+        if(can_character1_run_after_using_skill1 && can_character1_run_after_using_skill2
+           && can_character1_run_after_using_skill3){
+        character1.setheight(60);
+        character1.setwidth(48);
+
+        if(choose_right_1){
+
+
+          character1.loadtexture("image/error_sans_is_damaged_r.bmp");
+
+          character1.render(&character1_clip[character_frame_get_dam/5]);
+        }
+
+         if(choose_left_1){
+
+          character1.loadtexture("image/error_sans_is_damaged_l.bmp");
+
+          character1.render(&character1_clip[character_frame_get_dam/5]);
+        }
+
+
+
+        }
+
+
+
+
+
+        else{
+
+            if(can_character1_run_after_using_skill2 && can_character1_run_after_using_skill3){
+
+             //set sprite for ch when player use skill1
+            if(choose_right_1){
+
+                character1.loadtexture("image/error_sans_skill1_r.bmp");
 
             }
-            if(left_AI){
-                character2.loadtexture("image/chara_moving_left.bmp");
+
+
+             if(choose_left_1){
+
+                character1.loadtexture("image/error_sans_skill1_l.bmp");
+
+
+
             }
 
-            skill1_of_AI.loadtexture("image/chara_hit_directly.bmp");
+            if(character_frame_use_skill1/5==2){
+                character1.setheight(60);
+                character1.setwidth(58);
 
-            if(right_for_skill2_of_character2){character2_skill2.loadtexture("image/slash_chara_right.bmp");}
-            if(left_for_skill2_of_character2){character2_skill2.loadtexture("image/slash_chara_left.bmp");}
+            }
+
+            character1.render(&character1_clip[character_frame_use_skill1/5]);
+
+
+
+        }
+
+        else{
+
+
+        if(can_character1_run_after_using_skill3){
+
+             //set sprite for ch when player use skill2
+             if(choose_right_1){
+
+                character1.loadtexture("image/error_sans_skill2_r.bmp");
+             }
+
+              if(choose_left_1){
+
+                character1.loadtexture("image/error_sans_skill2_l.bmp");
+             }
+
+                if(character_frame_use_skill2/5==1){
+                    character1.setheight(60);
+                   character1.setwidth(58);
+
+                }
+                character1.render(&character1_clip[character_frame_use_skill2/5]);
+
+        }
+
+        else{
+             //set sprite for ch when player use skill3
+              if(choose_right_1){
+
+                character1.loadtexture("image/error_sans_skill3_r.bmp");
+             }
+
+             if(choose_left_1){
+
+                character1.loadtexture("image/error_sans_skill3_l.bmp");
+             }
+
+
+
+             character1.render(&character1_clip[character_frame_use_skill3/5]);
+
+
+
+        }
+
+
+
+
+        }
+
+
+
+        }
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+        }
+
+
+
+            if(right_for_skill2_of_character2){character2_skill2.loadtexture("image/slash_chara_right.bmp",255,255,255);}
+            if(left_for_skill2_of_character2){character2_skill2.loadtexture("image/slash_chara_left.bmp",255,255,255);}
 
 
 
@@ -130,24 +538,202 @@ void set_everything_in_game_stop(Ltexture character1,Ltexture character2,Ltextur
 
 
 
-            // set everything in game stop when we pause game
-
-            background.render(NULL);
-
-
-
-            character1.render(&character1_clip[character1_frame/20]);
 
 
 
 
-            character2.render(&character2_clip[character2_frame/20]);
+           if(!(can_character2_jump || tdy_character2 < tdy_of_ground) && !does_AI_miss && !Does_AI_use_skill2 &&
+       !(is_AI_hit_by_skill1_of_Player || is_AI_hit_by_skill2_of_Player || is_AI_hit_by_skill3_of_Player)&&
+       !Does_AI_use_skill3){
+    //set AI move r or l
+        if(right_AI){
+
+           character2.loadtexture("image/chara_moving_right.bmp",255,255,255);
+
+        }
+
+
+
+
+
+        if(left_AI){
+
+
+            character2.loadtexture("image/chara_moving_left.bmp",255,255,255);
+        }
+
+
+
+        character2.render(&character2_clip[character2_frame/10]);
+    }
+    else{
+
+
+        if(!does_AI_miss && !Does_AI_use_skill2
+           && !(is_AI_hit_by_skill1_of_Player || is_AI_hit_by_skill2_of_Player || is_AI_hit_by_skill3_of_Player)
+           && !Does_AI_use_skill3){
+        //set sprite jumping for AI
+         if(right_AI){
+
+           character2.loadtexture("image/chara_jump_right.bmp",255,255,255);
+
+        }
+
+
+        if(left_AI){
+
+           character2.loadtexture("image/chara_jump_left.bmp",255,255,255);
+
+        }
+
+        if(character2_frame_jump/10==0){
+            character2.setheight(60);
+            character2.setwidth(58);
+        }
+        character2.render(&character2_clip[character2_frame_jump/10]);
+
+    }
+    else{
+
+
+
+    if(!Does_AI_use_skill2 && !Does_AI_use_skill3 &&
+       !(is_AI_hit_by_skill1_of_Player || is_AI_hit_by_skill2_of_Player || is_AI_hit_by_skill3_of_Player)){
+        //set sprite miss for AI
+        character2.setwidth(60);
+        character2.setheight(55);
+          if(right_AI){
+
+           character2.loadtexture("image/chara_tele_right.bmp",255,255,255);
+
+        }
+
+
+
+         if(left_AI){
+
+           character2.loadtexture("image/chara_tele_left.bmp",255,255,255);
+
+        }
+
+        character2.render(&character2_clip[character2_frame_miss/10]);
+
+
+        }
+        else{
+
+         if(!(is_AI_hit_by_skill1_of_Player || is_AI_hit_by_skill2_of_Player || is_AI_hit_by_skill3_of_Player) &&
+            !Does_AI_use_skill3){
+            //set sprite skill2 for AI
+
+            if(right_AI){
+
+           character2.loadtexture("image/chara_use_skill2_r.bmp",255,255,255);
+
+        }
+
+
+        if(left_AI){
+
+           character2.loadtexture("image/chara_use_skill2_l.bmp",255,255,255);
+
+        }
+
+                character2.setheight(80);
+                character2.setwidth(70);
+
+             if(character2_frame_skill2/5>=3 && character2_frame_skill2/5<=5){
+                character2.setheight(80);
+                character2.setwidth(80);
+             }
+            character2.render(&character2_clip[character2_frame_skill2/5]);
+
+        }
+        else{
+
+        if(!Does_AI_use_skill3){
+           //set sprites for AI when he/she is hit
+        if(right_AI){
+
+
+         character2.loadtexture("image/chara_get_hit_right.bmp",255,255,255);
+
+
+
+
+
+
+
+        }
+
+        if(left_AI){
+
+
+
+           character2.loadtexture("image/chara_get_hit_left.bmp",255,255,255);
+
+
+
+
+
+        }
+
+
+
+             character2.setheight(60);
+             character2.setwidth(58);
+             character2.render(&character2_clip[AI_get_hit_frame/5]);
+
+        }
+        else{
+            //set sprites AI use skill 3
+
+            if(right_AI){
+
+           character2.loadtexture("image/chara_use_skill3_r.bmp",255,255,255);
+
+        }
+
+
+        if(left_AI){
+
+           character2.loadtexture("image/chara_use_skill3_l.bmp",255,255,255);
+
+        }
+
+        if(AI_use_skilll3_frame/5 == 0 && AI_use_skilll3_frame/5 ==5){
+          character2.setheight(70);
+          character2.setwidth(46);
+        }
+        else{
+            character2.setheight(70);
+          character2.setwidth(67);
+        }
+
+        character2.render(&character2_clip[AI_use_skilll3_frame/5]);
+
+
+        }
+
+
+        }
+
+        }
+
+    }
+
+
+
+
+    }
+
 
 
              if(is_skill2_of_character2_actived){
 
 
-                character2_skill2.render(NULL);
+                 character2_skill2.render(&skill2_of_AI_clip[skill2_of_AI_frame/5]);
+
             }
 
             if(is_ingradient_of_skill3_from_character2_actived[0]){
@@ -189,13 +775,13 @@ void set_everything_in_game_stop(Ltexture character1,Ltexture character2,Ltextur
 
       }
 
+    if(is_ingradient_of_skill2_from_character1_actived){
+      for(int i=0;i<quatities_of_bone;i++){
 
-      for(int i=0;i<quatities_of_skill2_for_character1;i++){
 
-            if(is_ingradient_of_skill2_from_character1_actived[i]){
                 skill2_of_character1[i].settdx(tdx_for_ingradient_of_skill2_character1[i]);
                 skill2_of_character1[i].settdy(tdy_for_ingradient_of_skill2_character1[i]);
-                skill2_of_character1[i].render(NULL);
+                 skill2_of_character1[i].render(&quatities_of_bone_clip[quatities_of_bone_frame/5]);
 
             }
       }

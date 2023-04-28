@@ -129,17 +129,37 @@ void set_skill1_of_character1_active(int tdy_character2,int &tdx_beam,
                                      ,int &height_of_beam,int &width_of_beam,int &tdy_beam,
                                      int &time_watting_for_skill1_of_character1,bool &did_character2_get_hit_by_skill1,
                                      bool stopping_time,Ltexture skill1_of_character1,Ltexture effect_for_skill1_of_character1,
-                                     int &skill1_of_character1_frame){
+                                     int &skill1_of_character1_frame,int &character_frame_use_skill1,
+                                     bool &can_character1_run_after_using_skill1,bool &delay_skill_of_player){
        if(!stopping_time) {height_of_beam=height_of_beam-tdy_character2+tdy_of_ground;}
        if(does_skill1_of_character1_active){
+
+         if(!stopping_time){
+           character_frame_use_skill1++;
+           if(character_frame_use_skill1/5>=6){
+              character_frame_use_skill1=25;
+
+           }
+           if(character_frame_use_skill1>=25){
+             can_character1_run_after_using_skill1=true;
+             delay_skill_of_player=false;
+           }
+           else{
+              can_character1_run_after_using_skill1=false;
+           }
+
+         }
+
           time_watting_for_skill1_of_character1=50;
           if(skill1_of_character1_frame/30>=3){
              skill1_of_character1_frame=0;
              does_skill1_of_character1_active=false;
+             can_character1_run_after_using_skill1=true;
              width_of_beam=0;
              height_of_beam=0;
              tdy_beam=tdy_skill1_of_character1;
              tdx_beam=tdx_skill1_of_character1;
+             character_frame_use_skill1=0;
 
           }
 
@@ -164,6 +184,15 @@ void set_skill1_of_character1_active(int tdy_character2,int &tdx_beam,
 
           }
            if(!stopping_time) {skill1_of_character1_frame++;}
+
+
+
+
+
+       }
+       else{
+           character_frame_use_skill1=0;
+           can_character1_run_after_using_skill1=true;
        }
 
 

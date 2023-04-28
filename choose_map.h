@@ -126,9 +126,13 @@ void set_choose_map_active(int &tdx_of_my_mouse, int &tdy_of_my_mouse,SDL_Event 
               tdy_of_my_mouse <=button_quit_choose_map.gettdy()+quit_choose_map.getheight()){
                   quit_choose_map_frame=1;
 
+
                   if(e.type==SDL_MOUSEBUTTONUP){
                      does_choose_map_appear=false;
                      does_choice_menu_appear=true;
+                      if(Mix_Playing(3)==0){
+                        Mix_PlayChannel( 3, music_select, 0 );
+                        }
 
                   }
             }
@@ -149,8 +153,13 @@ void set_choose_map_active(int &tdx_of_my_mouse, int &tdy_of_my_mouse,SDL_Event 
 
 
 
+
                if(e.type==SDL_MOUSEBUTTONUP){
-                  choose_map1=true;
+
+                 if(Mix_Playing(3)==0){
+                     Mix_PlayChannel( 3, music_select, 0 );
+                  }
+                 choose_map1=true;
                   choose_map2=false;
 
                }
@@ -172,6 +181,9 @@ void set_choose_map_active(int &tdx_of_my_mouse, int &tdy_of_my_mouse,SDL_Event 
 
 
                  if(e.type==SDL_MOUSEBUTTONUP){
+                   if(Mix_Playing(3)==0){
+                     Mix_PlayChannel( 3, music_select, 0 );
+                  }
                   choose_map2=true;
                   choose_map1=false;
                   your_choose_map.settdx(map2.gettdx()+(map2.getheight()-your_choose_map.getheight())/2);

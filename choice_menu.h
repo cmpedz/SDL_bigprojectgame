@@ -33,9 +33,20 @@ int continue_choice_menu_frame=0;
 SDL_Rect continue_choice_menu_clip[continue_choice_menu_quatities];
 button button_continue_choice_menu;
 
+
+
+
+
 #endif // CHOICE_MENU_H_INCLUDED
 
+
+
+
 void set_value_for_choice_menu(){
+
+
+
+
 
        Font_Title_of_choose_menu = TTF_OpenFont( "font/title.ttf", 50);
 
@@ -128,7 +139,7 @@ void set_choice_menu_active(bool &does_choice_menu_appear,SDL_Event &e,int& tdx_
                             int & tdy_of_my_mouse,bool& reset_everything_in_main_interface,bool &reset_everything_in_game,bool &quit,
                             bool &thay_doi_giao_dien_tu_man_hinh_chinh_sang_giao_dien_game,
                             TTF_Font* Font_Title_of_choose_menu,SDL_Color choose_menu_text_color,bool &does_choose_skin_interface_appear,
-                            bool &does_choose_map_appear){
+                            bool &does_choose_map_appear,bool &does_choose_level_appear,bool &does_music_in_menu_game_appear){
 
      choice_menu.render(NULL);
 
@@ -157,11 +168,21 @@ void set_choice_menu_active(bool &does_choice_menu_appear,SDL_Event &e,int& tdx_
 
 
 
+
+
+
                  if(e.type==SDL_MOUSEBUTTONUP){
+
+
+                     if(Mix_Playing(3)==0){
+                     Mix_PlayChannel( 3, music_select, 0 );
+                  }
 
                     does_choice_menu_appear=false;
                     thay_doi_giao_dien_tu_man_hinh_chinh_sang_giao_dien_game=false;
                     reset_everything_in_main_interface=true;
+
+
                  }
 
               }
@@ -176,10 +197,19 @@ void set_choice_menu_active(bool &does_choice_menu_appear,SDL_Event &e,int& tdx_
               tdy_of_my_mouse>=button_continue_choice_menu.gettdy() &&
               tdy_of_my_mouse <=button_continue_choice_menu.gettdy()+continue_choice_menu.getheight()){
                  continue_choice_menu_frame=1;
+
+
                  if(e.type==SDL_MOUSEBUTTONUP){
+
+
+                     if(Mix_Playing(3)==0){
+                     Mix_PlayChannel( 3, music_select, 0 );
+                  }
                     does_choice_menu_appear=false;
                     thay_doi_giao_dien_tu_man_hinh_chinh_sang_giao_dien_game=true;
                     reset_everything_in_game=true;
+                    does_music_in_menu_game_appear=false;
+                    Mix_HaltMusic();
                  }
 
               }
@@ -188,19 +218,7 @@ void set_choice_menu_active(bool &does_choice_menu_appear,SDL_Event &e,int& tdx_
             }
 
 
-        if(tdx_of_my_mouse>=choose_skin_button.gettdx() &&
-              tdx_of_my_mouse <=choose_skin_button.gettdx()+choose_skin.getwidth()&&
-              tdy_of_my_mouse>=choose_skin_button.gettdy() &&
-              tdy_of_my_mouse <=choose_skin_button.gettdy()+choose_skin.getheight()){
 
-
-               if(e.type==SDL_MOUSEBUTTONUP){
-                    does_choose_skin_interface_appear=true;
-                    does_choice_menu_appear=false;
-               }
-
-
-            }
 
 
 
@@ -215,6 +233,10 @@ void set_choice_menu_active(bool &does_choice_menu_appear,SDL_Event &e,int& tdx_
               tdy_of_my_mouse>=choose_map_button.gettdy() &&
               tdy_of_my_mouse <=choose_map_button.gettdy()+choose_map.getheight()){
 
+
+
+
+
                white_bg.settdx(choose_map_button.gettdx()-10);
                white_bg.settdy(choose_map_button.gettdy()-10);
                white_bg.render(NULL);
@@ -225,6 +247,9 @@ void set_choice_menu_active(bool &does_choice_menu_appear,SDL_Event &e,int& tdx_
                MAP.render(NULL);
 
                if(e.type==SDL_MOUSEBUTTONUP){
+                     if(Mix_Playing(3)==0){
+                        Mix_PlayChannel( 3, music_select, 0 );
+                    }
                     does_choose_map_appear=true;
                     does_choice_menu_appear=false;
                }
@@ -238,6 +263,9 @@ void set_choice_menu_active(bool &does_choice_menu_appear,SDL_Event &e,int& tdx_
               tdy_of_my_mouse>=choose_skin_button.gettdy() &&
               tdy_of_my_mouse <=choose_skin_button.gettdy()+choose_skin.getheight()){
 
+
+
+
                white_bg.settdx(choose_skin_button.gettdx()-10);
                white_bg.settdy(choose_skin_button.gettdy()-10);
                white_bg.render(NULL);
@@ -247,14 +275,28 @@ void set_choice_menu_active(bool &does_choice_menu_appear,SDL_Event &e,int& tdx_
                SKIN.settdy(choose_skin_button.gettdy()-10-SKIN.getheight());
                SKIN.render(NULL);
 
+                 if(e.type==SDL_MOUSEBUTTONUP){
+
+                     if(Mix_Playing(3)==0){
+                        Mix_PlayChannel( 3, music_select, 0 );
+                    }
+                    does_choose_skin_interface_appear=true;
+                    does_choice_menu_appear=false;
+               }
+
 
             }
 
 
+
+
+               // set choose level button active
             if(tdx_of_my_mouse>=choose_level_button.gettdx() &&
               tdx_of_my_mouse <=choose_level_button.gettdx()+choose_map.getwidth()&&
               tdy_of_my_mouse>=choose_level_button.gettdy() &&
               tdy_of_my_mouse <=choose_level_button.gettdy()+choose_map.getheight()){
+
+
 
                white_bg.settdx(choose_level_button.gettdx()-10);
                white_bg.settdy(choose_level_button.gettdy()-10);
@@ -265,6 +307,15 @@ void set_choice_menu_active(bool &does_choice_menu_appear,SDL_Event &e,int& tdx_
                LEVEL.settdy(choose_level_button.gettdy()-10-LEVEL.getheight());
                LEVEL.render(NULL);
 
+                if(e.type==SDL_MOUSEBUTTONUP){
+
+
+                if(Mix_Playing(3)==0){
+                    Mix_PlayChannel( 3, music_select, 0 );
+                  }
+                    does_choose_level_appear=true;
+                    does_choice_menu_appear=false;
+               }
             }
 
 

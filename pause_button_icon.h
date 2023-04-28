@@ -97,7 +97,7 @@ void set_icon_pause_button_active(int x_mouse,int y_mouse,int &click,SDL_Event _
                                   bool &quit,bool &thay_doi_giao_dien_tu_man_hinh_chinh_sang_giao_dien_game,bool &reset_everything_in_main_interface,
                                   long long &time_appearing_of_anti_void,long long &saving_time_appearing_of_anti_void,
                                   long long &time_appearing_of_ink_sans,long long &saving_time_appearing_of_ink_sans,
-                                  long long &saving_time_appearing_bonus){
+                                  long long &saving_time_appearing_bonus,bool &does_music_in_menu_game_appear){
 
      if(!stopping_time){
         image_pause.render(NULL);
@@ -164,7 +164,14 @@ void set_icon_pause_button_active(int x_mouse,int y_mouse,int &click,SDL_Event _
               y_mouse>=continue_button_in_stopping_menu.gettdy()&& y_mouse<=continue_button_in_stopping_menu.gettdy()+image_of_continue_button_in_stopping_menu.getheight()){
 
 
+
+
                 if(_e.type==SDL_MOUSEBUTTONUP){
+
+
+                  if(Mix_Playing(3)==0){
+                     Mix_PlayChannel( 3, music_select, 0 );
+                  }
                    stopping_time=false;
                    stopping_menu_active=false;
                     time_in_game=SDL_GetTicks();
@@ -199,10 +206,22 @@ void set_icon_pause_button_active(int x_mouse,int y_mouse,int &click,SDL_Event _
             if(x_mouse>=quit_button_in_stopping_menu.gettdx() && x_mouse<= quit_button_in_stopping_menu.gettdx()+image_of_quit_button_in_stopping_menu.getwidth()&&
               y_mouse>=quit_button_in_stopping_menu.gettdy()&& y_mouse<=quit_button_in_stopping_menu.gettdy()+image_of_quit_button_in_stopping_menu.getheight()){
 
+
+
+
+
                 if(_e.type==SDL_MOUSEBUTTONUP){
+
+                  if(Mix_Playing(3)==0){
+                     Mix_PlayChannel( 3, music_select, 0 );
+                  }
+
+
                    stopping_menu_active=false;
                    stopping_time=false;
                    reset_everything_in_main_interface=true;
+                   Mix_HaltMusic();
+                   does_music_in_menu_game_appear=true;
                    thay_doi_giao_dien_tu_man_hinh_chinh_sang_giao_dien_game=false;
                 }
                 quit_button_frame_in_stopping_menu=1;

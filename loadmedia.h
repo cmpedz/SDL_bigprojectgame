@@ -1,4 +1,3 @@
-
 #ifndef loadmedia
 #define loadmedia
 bool loadedmedia(bool success){

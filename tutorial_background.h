@@ -99,13 +99,13 @@ void set_value_for_background_of_tutorial_menu(){
 
 	   sprite_button_up.loadtexture("image/button_up.bmp");
 	    sprite_button_up.settdx(89);
-	    sprite_button_up.settdy(569);
+	    sprite_button_up.settdy(450);
 	    sprite_button_up.setheight(50);
 	    sprite_button_up.setwidth(50);
 
 	    sprite_button_left.loadtexture("image/button_left.bmp");
 	    sprite_button_left.settdx(42);
-	    sprite_button_left.settdy(359);
+	    sprite_button_left.settdy(320);
 	    sprite_button_left.setheight(50);
 	    sprite_button_left.setwidth(50);
 

@@ -19,6 +19,10 @@ Ltexture health_bar_2_for_character2;
   int losing_health_of_ch2=0;
   double tdx_health_bar_2_of_character2=1080-400;
 
+
+
+Mix_Chunk *music_taken_dam=NULL;
+
 #endif // texture
 void reset_health_bar(int &tdx_of_losing_effect1,int &tdy_of_losing_effect1,bool &key_active_effect_of_losing_health1,
                       bool &key_active_effect_of_losing_health2,int &tdx_of_losing_effect2,int &tdy_of_losing_effect2){
@@ -38,6 +42,22 @@ void reset_health_bar(int &tdx_of_losing_effect1,int &tdy_of_losing_effect1,bool
       tdx_of_losing_effect2=tdx_character2+5;
       tdy_of_losing_effect2=height_of_screen/4*3;
       key_active_effect_of_losing_health2=false;
+
+}
+
+void free_music_taken_dam(){
+     Mix_FreeChunk( music_taken_dam);
+     music_taken_dam = NULL;
+
+}
+
+void set_music_taken_dam(){
+    music_taken_dam=Mix_LoadWAV("music/taken_dam.mp3");
+    if( music_taken_dam == NULL )
+	{
+		printf( "Failed to load beat music! SDL_mixer Error: %s\n", Mix_GetError() );
+
+	}
 
 }
 

@@ -1,5 +1,8 @@
 -ở phần này em đã thêm các tính năng mới cho game :
-+tạo giao diện chọn skin và map
-+tạo thêm một số bonus cho skin2 (cần xu để mở)
++hoàn thiện đc nút pause cho game
++cải tiến thêm giao diện game
++cài đặt đc việc điều chỉnh fps
+
 - mục tiêu tiếp theo :
-+cài đặt âm thanh và giao diện chọn chế độ
++học font chữ để thiết kế giao diện chọn map,nhân vật và chế độ
++học âm thanh để thêm vào game

@@ -3,7 +3,7 @@
 #include"texture.h"
 const int button_width=415/3*2;
 const int button_height=125/3*2;
-const int button_total=1;
+
 int tdx_of_my_mouse=0;
 int tdy_of_my_mouse=0;
 

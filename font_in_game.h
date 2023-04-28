@@ -22,22 +22,7 @@ bool does_tilte_in_main_interface_appear=false;
 
 #endif // FONT_IN_GAME_H_INCLUDED
 
-void set_tutorial_font(Ltexture Tilte_of_bg_tutorial_Menu,TTF_Font* Font_Title_of_tutorial_menu){
-     Font_Title_of_tutorial_menu = TTF_OpenFont( "font/title.ttf", 50);
-     	if( Font_Title_of_tutorial_menu == NULL )
-	{
-		printf( "Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError() );
 
-	}
-	else{
-       SDL_Color tutorial_text_Color = { 34, 177, 76 };
-       Tilte_of_bg_tutorial_Menu.loadFromRenderedText("TUTORIAL",tutorial_text_Color,Font_Title_of_tutorial_menu);
-       Tilte_of_bg_tutorial_Menu.settdx(352);
-       Tilte_of_bg_tutorial_Menu.settdy(32);
-       Tilte_of_bg_tutorial_Menu.render(NULL);
-	}
-
-}
 
 void set_title_for_main_interface_of_game(bool does_tilte_in_main_interface_appear,SDL_Color SANS_AND_V_text_Color,
                                           SDL_Color CHARA_AND_S_text_color){

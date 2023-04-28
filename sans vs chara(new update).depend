@@ -1589,12 +1589,13 @@
 
 1680920414 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\gravity.h
 
-1681656741 source:c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sourecpp\main.cpp
+1682566199 source:c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sourecpp\main.cpp
 	<iostream>
 	<math.h>
 	<fstream>
 	<SDL.h>
 	<SDL_ttf.h>
+	<SDL_mixer.h>
 	"../library/gravity.h"
 	"../library/common function.h"
 	"../library/loadmedia.h"
@@ -1606,6 +1607,7 @@
 	"../library/choice_menu.h"
 	"../library/choose_skin_interface.h"
 	"../library/choose_map.h"
+	"../library/choose_level.h"
 	"../library/tutorial_background.h"
 	"../library/background.h"
 	"../library/time_watting_skill_of_player_icon.h"
@@ -1630,16 +1632,16 @@
 	"../library/stopping_setting.h"
 	"../library/event loop.h"
 
-1681042870 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\common function.h
+1682615445 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\common function.h
 	<iostream>
 
-1680920414 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\loadmedia.h
+1682643133 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\loadmedia.h
 
-1681042870 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\texture.h
+1681788277 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\texture.h
 	<SDL.h>
 	<iostream>
 
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\font_in_game.h
+1682343054 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\font_in_game.h
 	"texture.h"
 	<string>
 	<vector>
@@ -1648,99 +1650,505 @@
 1680920414 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\timer.h
 	<SDL.h>
 
-1680920414 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\button.h
+1682607060 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\button.h
 	"texture.h"
 
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\giao_dien_game.h
-	"texture.h"
-	"button.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\choice_menu.h
+1682643257 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\giao_dien_game.h
 	"texture.h"
 	"button.h"
 
-1681656820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\choose_skin_interface.h
+1682604845 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\choice_menu.h
 	"texture.h"
 	"button.h"
 
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\choose_map.h
+1682643291 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\choose_skin_interface.h
 	"texture.h"
 	"button.h"
 
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\tutorial_background.h
+1682604845 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\choose_map.h
+	"texture.h"
+	"button.h"
+
+1682343270 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\tutorial_background.h
 	"texture.h"
 
 1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\background.h
 	"texture.h"
 
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\time_watting_skill_of_player_icon.h
+1682613266 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\time_watting_skill_of_player_icon.h
 	"texture.h"
 
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\pause_button_icon.h
-	"texture.h"
-	"button.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\error_sans_bonus.h
-	"texture.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\character.h
-	"texture.h"
-	"gravity.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\character2.h
-	"texture.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\miss_effect.h
-	"texture.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\no_effect.h
-	"texture.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\character2_skill2.h
-	"texture.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\character2_skill3.h
-	"texture.h"
-
-1681558466 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\ai_moving.h
-	"texture.h"
-	<SDL.h>
-	"gravity.h"
-
-1681558543 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\moving_right.h
-	<SDL.h>
-	"common function.h"
-
-1681558543 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\moving_left.h
-	<SDL.h>
-	"common function.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\health_bar.h
-	"texture.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\skill1_of_character1.h
-	"texture.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\skill2_of_character1.h
-	"texture.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\skill3_of_character1.h
-	"texture.h"
-
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\game_over.h
+1682604845 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\pause_button_icon.h
 	"texture.h"
 	"button.h"
 
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\winner.h
+1682521470 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\error_sans_bonus.h
+	"texture.h"
+
+1682327032 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\character.h
+	"texture.h"
+	"gravity.h"
+
+1682527939 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\character2.h
+	"texture.h"
+
+1682643144 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\miss_effect.h
+	"texture.h"
+
+1682643187 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\no_effect.h
+	"texture.h"
+
+1682614558 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\character2_skill2.h
+	"texture.h"
+
+1682566199 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\character2_skill3.h
+	"texture.h"
+
+1682348611 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\ai_moving.h
+	"texture.h"
+	<SDL.h>
+	"gravity.h"
+
+1682643171 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\moving_right.h
+	<SDL.h>
+	"common function.h"
+
+1682643162 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\moving_left.h
+	<SDL.h>
+	"common function.h"
+
+1682523456 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\health_bar.h
+	"texture.h"
+
+1682611996 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\skill1_of_character1.h
+	"texture.h"
+
+1682612616 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\skill2_of_character1.h
+	"texture.h"
+
+1682643310 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\skill3_of_character1.h
+	"texture.h"
+
+1682604845 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\game_over.h
+	"texture.h"
+	"button.h"
+
+1682606619 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\winner.h
 	"texture.h"
 
 1681556894 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\free_texture.h
 	"texture.h"
 
-1681655776 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\stopping_setting.h
+1682347318 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\stopping_setting.h
 	"texture.h"
 
-1681657946 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\event loop.h
+1682614558 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\event loop.h
 	"texture.h"
 	"common function.h"
+
+1682604845 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\library\choose_level.h
+	"texture.h"
+
+1675731449 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl_mix\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_gamecontroller.h"
+	"SDL_guid.h"
+	"SDL_haptic.h"
+	"SDL_hidapi.h"
+	"SDL_hints.h"
+	"SDL_joystick.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_metal.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_shape.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"SDL_locale.h"
+	"SDL_misc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<wchar.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	<sal.h>
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+	<winsdkver.h>
+	<sdkddkver.h>
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_platform.h
+	<AvailabilityMacros.h>
+	<TargetConditionals.h>
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\begin_code.h
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\close_code.h
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_assert.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<sys/cpuinline.h>
+	<mbarrier.h>
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<endian.h>
+	<endian.h>
+	<sys/endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	<process.h>
+	<process.h>
+	<stdlib.h>
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<arm_neon.h>
+	<altivec.h>
+	<arm_neon.h>
+	<armintr.h>
+	<arm_neon.h>
+	<arm64intr.h>
+	<arm64_neon.h>
+	<mm3dnow.h>
+	<lsxintrin.h>
+	<lasxintrin.h>
+	<immintrin.h>
+	<mmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	<pmmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_pixels.h
+	"SDL_stdinc.h"
+	"SDL_endian.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1675699398 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_guid.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_guid.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_sensor.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_hidapi.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_metal.h
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_shape.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757821 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_locale.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1672757820 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl.h\include\sdl2\sdl_misc.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1675732513 c:\users\admin\desktop\bách khoa\sdl_bigprojectgame-sdl_bigprojectgame_new_update_0.7\sdl_lib\sdl_tff\include\sdl2\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
 
